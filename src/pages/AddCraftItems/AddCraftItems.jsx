@@ -68,7 +68,7 @@ const AddCraftItems  = () => {
 
   return (
     <div>
-      <Navbar />
+      
       <div className="bg-white py-12 md:py-20">
         <div className="w-[90%] md:w-[85%] lg:w-[70%] mx-auto shadow-2xl bg-base-100 rounded-2xl">
           <h2 className="text-4xl font-bold text-center pt-12">Add Plant</h2>
@@ -160,7 +160,7 @@ const AddCraftItems  = () => {
           </form>
         </div>
       </div>
-      <Footer />
+      
     </div>
   );
 };

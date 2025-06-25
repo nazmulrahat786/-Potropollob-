@@ -19,14 +19,9 @@ const Navbar = () => {
         <NavLink to="/allArtCraftItems">All Plants</NavLink>
       </li>
       {user && (
-        <>
-          <li>
-            <NavLink to="/addCraftItems">Add Plant</NavLink>
-          </li>
-          <li>
-            <NavLink to="/myArtCraftList">My Plants</NavLink>
-          </li>
-        </>
+        <li>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
       )}
       <li>
         <NavLink to="/about">About Us</NavLink>

@@ -25,7 +25,7 @@ const MyArtCraftList = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
+            
             <div className="py-10">
                 <div className="flex justify-center mb-12">
                
@@ -41,7 +41,7 @@ const MyArtCraftList = () => {
                     }
                 </div>
             </div>
-            <Footer></Footer>
+           
         </div>
     );
 };

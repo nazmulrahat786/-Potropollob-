@@ -14,6 +14,8 @@ import SubcategoryItems from "../pages/SubcategoryItems/SubcategoryItems";
 import SubCategoryDetails from "../pages/SubCategoryDetails/SubCategoryDetails";
 import AboutPage from "../pages/AboutPage/AboutPage";
 import SupportPage from "../pages/SupportPage/SupportPage";
+import Overview from "../pages/Dashboard/Overview";
+import DashboardLayout from "../pages/Dashboard/DashboardLayout";
 
 const router = createBrowserRouter([
     {
@@ -71,6 +73,18 @@ const router = createBrowserRouter([
       
       ]
     },
+    {
+    path: "/dashboard",
+    element: <PrivateRoute>
+      <DashboardLayout /></PrivateRoute>,
+    children: [
+      { index: true, element: <Overview /> ,
+         loader: () => fetch('https://potropollob-server-side.vercel.app/addplants')
+      },
+      { path: "add-plant", element: <AddCraftItems /> },
+      { path: "my-plants", element: <MyArtCraftList /> },
+    ],
+  },
   ]);
 
 export default router;
