@@ -1,7 +1,7 @@
 import Navbar from "../Navbar/Navbar";
 import Banner from "../Banner/Slider";
 import CraftItems from "../CraftItems/CraftItems";
-import ArtAndCraft from "../ArtAndCraft/ArtAndCraft";
+
 import Footer from "../Footer/Footer";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -31,7 +31,7 @@ const Home = () => {
             <CraftItems
                 myItems={myItems}
             ></CraftItems>
-            <ArtAndCraft></ArtAndCraft>
+           
             <ShowCase></ShowCase>
             <Traditional></Traditional>
             <Footer></Footer>

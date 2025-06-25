@@ -55,16 +55,7 @@ const router = createBrowserRouter([
           element: <UpdateDataForm></UpdateDataForm>,
           loader: ({params}) => fetch(`https://potropollob-server-side.vercel.app/addplants/${params.id}`)
         },
-        {
-          path: '/subCategoryItems/:subcategory',
-          element: <SubcategoryItems></SubcategoryItems>,
-          loader: ({params}) => fetch(`https://ceramics-and-pottery-server.vercel.app/subcategory/${params.subcategory}`)
-        },
-        {
-          path: '/subCategoryDetails/:id',
-          element: <SubCategoryDetails></SubCategoryDetails>,
-          loader: ({params}) => fetch(`https://ceramics-and-pottery-server.vercel.app/subCategoryDetails/${params.id}`)
-        }
+      
       ]
     },
   ]);
