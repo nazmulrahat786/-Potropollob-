@@ -1,0 +1,49 @@
+import { useContext, useEffect, useState } from "react";
+import Footer from "../Footer/Footer";
+import Navbar from "../Navbar/Navbar";
+import { AuthContext } from "../../provider/AuthProvider";
+import MyArtCraftItem from "../MyArtCraftItem/MyArtCraftItem";
+
+const MyArtCraftList = () => {
+    const { user } = useContext(AuthContext);
+    const [myItems, setMyItems] = useState([]);
+    const [originalItems, setOriginalItems] = useState([]);
+
+    useEffect(() => {
+        if (user) {
+            fetch(`https://potropollob-server-side.vercel.app/myplants/${user.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    setMyItems(data);
+                    setOriginalItems(data);
+                    console.log(data);
+                })
+        }
+    }, [user]);
+
+
+
+    return (
+        <div>
+            <Navbar></Navbar>
+            <div className="py-10">
+                <div className="flex justify-center mb-12">
+               
+                </div>
+                <div className="space-y-4">
+                    {
+                        myItems.map(item => <MyArtCraftItem
+                            key={item._id}
+                            item={item}
+                            myItems={myItems}
+                            setMyItems={setMyItems}
+                        ></MyArtCraftItem>)
+                    }
+                </div>
+            </div>
+            <Footer></Footer>
+        </div>
+    );
+};
+
+export default MyArtCraftList;
