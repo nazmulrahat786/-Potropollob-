@@ -5,8 +5,10 @@ import CraftItems from "../CraftItems/CraftItems";
 import Footer from "../Footer/Footer";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import Traditional from "../Traditional/Traditional";
-import ShowCase from "../ShowCase/ShowCase";
+import Services from "../Services/Services";
+import PromoSection from "../PromoSection/PromoSection";
+import Reviews from "../Reviews/Reviews";
+
 // import { useLoaderData } from "react-router-dom";
 
 const Home = () => {
@@ -31,9 +33,10 @@ const Home = () => {
             <CraftItems
                 myItems={myItems}
             ></CraftItems>
+           <Services></Services>
+           <PromoSection></PromoSection>
+           <Reviews></Reviews>
            
-            <ShowCase></ShowCase>
-            <Traditional></Traditional>
             <Footer></Footer>
         </div>
     );

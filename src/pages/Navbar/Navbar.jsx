@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import "./Navbar.css";
 
-
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
 
@@ -78,7 +77,7 @@ const Navbar = () => {
                 alt="Logo"
               />
               <h2 className="text-3xl font-bold invisible md:visible">
-                Pottery
+                Potropollob
               </h2>
             </div>
           </Link>

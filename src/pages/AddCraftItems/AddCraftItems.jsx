@@ -46,7 +46,7 @@ const AddCraftItems  = () => {
     };
 
     // Send to backend
-    fetch("https://ceramics-and-pottery-server.vercel.appaddplants ", {
+    fetch("https://potropollob-server-side.vercel.app/addplants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const AddCraftItems  = () => {
   return (
     <div>
       <Navbar />
-      <div className="bg-[#f0bc8c] py-12 md:py-20">
+      <div className="bg-white py-12 md:py-20">
         <div className="w-[90%] md:w-[85%] lg:w-[70%] mx-auto shadow-2xl bg-base-100 rounded-2xl">
           <h2 className="text-4xl font-bold text-center pt-12">Add Plant</h2>
           <form onSubmit={handleAddCraftItems } className="card-body">

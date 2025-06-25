@@ -12,6 +12,8 @@ import Page404 from "../pages/Page404/Page404";
 import PrivateRoute from "./PrivateRoute";
 import SubcategoryItems from "../pages/SubcategoryItems/SubcategoryItems";
 import SubCategoryDetails from "../pages/SubCategoryDetails/SubCategoryDetails";
+import AboutPage from "../pages/AboutPage/AboutPage";
+import SupportPage from "../pages/SupportPage/SupportPage";
 
 const router = createBrowserRouter([
     {
@@ -54,6 +56,17 @@ const router = createBrowserRouter([
           path: '/updateDataForm/:id',
           element: <UpdateDataForm></UpdateDataForm>,
           loader: ({params}) => fetch(`https://potropollob-server-side.vercel.app/addplants/${params.id}`)
+        },
+        {
+          path: '/about',
+          element: <AboutPage></AboutPage>,
+          
+        },
+        
+        {
+          path: '/support',
+          element: <SupportPage></SupportPage>,
+          
         },
       
       ]
