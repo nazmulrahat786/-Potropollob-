@@ -1,6 +1,5 @@
 // Slider.jsx
 
-import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, A11y, EffectFade } from 'swiper/modules';
 

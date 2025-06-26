@@ -1,8 +1,6 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import Navbar from "../pages/Navbar/Navbar";
-import Footer from "../pages/Footer/Footer";
 import Loading from "../../public/Loading";
 
 const AllPlants = () => {
@@ -101,7 +99,8 @@ const AllPlants = () => {
 
         <div className="overflow-x-auto shadow rounded-lg border border-gray-200 dark:border-gray-700">
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 table-auto sm:table-fixed">
-            <thead className="bg-gray-50 dark:bg-gray-800">
+            {/* Table header hidden on small screens */}
+            <thead className="bg-gray-50 dark:bg-gray-800 hidden sm:table-header-group">
               <tr>
                 <th className="px-3 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                   Image
@@ -125,25 +124,40 @@ const AllPlants = () => {
                 filteredAndSortedItems.map((item) => (
                   <tr
                     key={item._id}
-                    className="hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
+                    className="block sm:table-row hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer mb-6 sm:mb-0"
                   >
-                    <td className="px-3 sm:px-6 py-2 whitespace-nowrap">
+                    <td
+                      className="block sm:table-cell px-3 sm:px-6 py-2 whitespace-normal sm:whitespace-nowrap relative"
+                      data-label="Image"
+                    >
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="h-12 w-12 sm:h-16 sm:w-16 rounded object-cover"
+                        className="h-24 w-24 sm:h-16 sm:w-16 rounded object-cover mx-auto sm:mx-0"
                       />
                     </td>
-                    <td className="px-3 sm:px-6 py-2 whitespace-nowrap text-gray-900 dark:text-gray-100 font-semibold text-sm sm:text-base">
+                    <td
+                      className="block sm:table-cell px-3 sm:px-6 py-2 whitespace-normal sm:whitespace-nowrap text-gray-900 dark:text-gray-100 font-semibold text-sm sm:text-base"
+                      data-label="Name"
+                    >
                       {item.name}
                     </td>
-                    <td className="px-3 sm:px-6 py-2 whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                    <td
+                      className="block sm:table-cell px-3 sm:px-6 py-2 whitespace-normal sm:whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm sm:text-base"
+                      data-label="Category"
+                    >
                       {item.category}
                     </td>
-                    <td className="px-3 sm:px-6 py-2 whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                    <td
+                      className="block sm:table-cell px-3 sm:px-6 py-2 whitespace-normal sm:whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm sm:text-base"
+                      data-label="Health Status"
+                    >
                       {item.healthStatus}
                     </td>
-                    <td className="px-3 sm:px-6 py-2 whitespace-nowrap text-center">
+                    <td
+                      className="block sm:table-cell px-3 sm:px-6 py-2 whitespace-normal sm:whitespace-nowrap text-center"
+                      data-label="Actions"
+                    >
                       <button
                         onClick={() =>
                           navigate(`/plantViewDetails/${item._id}`)
@@ -169,7 +183,6 @@ const AllPlants = () => {
           </table>
         </div>
       </main>
-
     </div>
   );
 };
