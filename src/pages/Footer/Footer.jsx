@@ -11,7 +11,7 @@ import logo from "../../assets/logo.png"; // Adjust the path if needed
 
 const Footer = () => {
   return (
-    <footer className="bg-base-200 text-base-content py-10 px-4">
+    <footer className="bg-green-100 text-base-content py-10 px-4">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {/* Logo & About */}
         <div>

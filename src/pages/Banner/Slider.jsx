@@ -25,7 +25,7 @@ const images = [
 
 const Slider = () => {
   return (
-    <div className="max-w-5xl mx-auto p-4">
+    <div className="max-w-5xl mx-auto p-4" style={{ height: '65vh' }}> {/* কারোসেল কন্টেইনারের height 65vh */}
       <Swiper
         modules={[Autoplay, Pagination, A11y, EffectFade]}
         effect="fade"
@@ -36,15 +36,16 @@ const Slider = () => {
         }}
         speed={1000} // smooth transition speed
         pagination={{ clickable: true }}
-        className="rounded-2xl overflow-hidden shadow-xl"
+        className="rounded-2xl overflow-hidden shadow-xl h-full" // পুরো Swiper কে height full দাও
+        style={{ width: '100%', height: '100%' }} // width ও height 100%
       >
         {images.map((img, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} style={{ width: '100%', height: '100%' }}> {/* প্রতিটি slide full width & height */}
             <img
               src={img.url}
               alt={img.alt}
               loading="lazy"
-              className="w-full h-[400px] object-cover transition-transform duration-1000"
+              className="w-full h-full object-cover transition-transform duration-1000"
             />
           </SwiperSlide>
         ))}

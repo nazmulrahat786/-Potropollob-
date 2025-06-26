@@ -2,7 +2,7 @@
 
 const PromoSection = () => {
   return (
-    <section className="bg-green-100 text-green-900 py-16 px-6">
+    <section className="bg-emerald-50 text-green-900 py-16 px-6">
       <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center gap-8">
         {/* Text Content */}
         <div className="flex-1 text-center md:text-left">

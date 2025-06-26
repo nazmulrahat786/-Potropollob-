@@ -69,7 +69,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-green-500 sticky top-0 z-50">
+    <div className="bg-green-500 sticky top-0 z-50 px-4 md:px-8">
       <div className="navbar max-w-6xl mx-auto text-white">
         <div className="navbar-start">
           <div className="dropdown">
@@ -145,9 +145,7 @@ const Navbar = () => {
               </Link>
               <Link to="/register">
                 <button
-                  className="py-2 px-4 bt
-                
-                md:px-6 rounded font-semibold bg-white text-green-700 ml-2"
+                  className="py-2 px-4 md:px-6 rounded font-semibold bg-white text-green-700 ml-2"
                 >
                   Register
                 </button>
