@@ -1,5 +1,6 @@
 import Navbar from "../Navbar/Navbar";
 import Banner from "../Banner/Slider";
+import { Toaster } from 'react-hot-toast';
 
 import Footer from "../Footer/Footer";
 import { useContext, useEffect, useState } from "react";
@@ -8,7 +9,7 @@ import Services from "../Services/Services";
 import PromoSection from "../PromoSection/PromoSection";
 import Reviews from "../Reviews/Reviews";
 import NewPlants from "../../components/NewPlants/NewPlants";
-import { Toaster } from "react-hot-toast";
+
 import { ToastContainer } from "react-toastify";
 
 const Home = () => {

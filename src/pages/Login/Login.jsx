@@ -61,7 +61,7 @@ const Login = () => {
       <Navbar />
 
       {/* Main Content */}
-      <main className="flex-grow flex justify-center items-center bg-gray-100 px-4 py-10">
+      <main className="flex-grow flex justify-center items-center  px-4 py-10">
         <div className="bg-white shadow-md rounded-lg p-8 w-[90%] max-w-3xl flex flex-col lg:flex-row-reverse items-center gap-8">
           
           {/* Animation */}
@@ -116,9 +116,9 @@ const Login = () => {
             <div className="text-center mt-4">
               <button
                 onClick={handleGoogleLogin}
-                className="flex items-center gap-2 justify-center mt-2 py-2 px-4 w-full rounded-lg border-2 border-green-500 font-bold hover:bg-green-100 hover:text-black transition-all"
+                className="flex text-black items-center gap-2 justify-center mt-2 py-2 px-4 w-full rounded-lg border-2 border-green-500 font-bold hover:bg-green-100 hover:text-black transition-all"
               >
-                <FcGoogle className="text-xl" /> Google
+                <FcGoogle className="text-xl " /> Google
               </button>
             </div>
 

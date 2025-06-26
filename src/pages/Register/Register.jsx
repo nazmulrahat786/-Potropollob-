@@ -1,15 +1,17 @@
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { IoEyeSharp } from "react-icons/io5";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 import Lottie from "lottie-react";
 import registerAnimation from "../../assets/register.json";
-import { toast, ToastContainer } from "react-toastify";
+import {  ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
@@ -72,21 +74,21 @@ const Register = () => {
   const handleToggleSignBtn = () => {
     setSignToggle(!signToggle);
   };
-   const handleGoogleLogin = () => {
-    googleLogin()
-      .then(() => {
-        toast.success("Google login successful");
-        navigate("/");
-      })
-      .catch(() => {
-        toast.error("Google login failed. Please try again.");
-      });
-  };
+const handleGoogleLogin = () => {
+  googleLogin()
+    .then(() => {
+      toast.success("Google login successful");
+      navigate("/");
+    })
+    .catch(() => {
+      toast.error("Google login failed. Please try again.");
+    });
+};
 
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gray-100 py-5 px-4 sm:px-6 lg:px-8 flex flex-col">
+      <main className="min-h-screen  py-5 px-4 sm:px-6 lg:px-8 flex flex-col">
         <div className="flex-grow flex justify-center items-center">
           <div className="bg-white shadow-lg rounded-lg max-w-5xl w-full flex flex-col lg:flex-row items-center gap-6 p-6 sm:p-10">
             {/* Lottie Animation */}
@@ -170,7 +172,7 @@ const Register = () => {
             <div className="text-center mt-4">
               <button
                 onClick={handleGoogleLogin}
-                className="flex items-center gap-2 justify-center mt-2 py-2 px-4 w-full rounded-lg border-2 border-green-500 font-bold hover:bg-green-100 hover:text-black transition-all"
+                className="flex items-center text-black gap-2 justify-center mt-2 py-2 px-4 w-full rounded-lg border-2 border-green-500 font-bold hover:bg-green-100 hover:text-black transition-all"
               >
                 <FcGoogle className="text-xl" /> Google
               </button>

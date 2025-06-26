@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
+import { toast } from 'react-hot-toast';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -30,15 +31,19 @@ const Navbar = () => {
     }
   };
 
-  const handleLogout = () => {
-    logout()
-      .then(() => {
-        console.log("Logged out successfully");
-      })
-      .catch((error) => {
-        console.error("Logout failed:", error);
-      });
-  };
+
+
+const handleLogout = () => {
+  logout()
+    .then(() => {
+      toast.success("Successfully logged out");
+    })
+    .catch((error) => {
+      toast.error("Logout failed");
+      console.error("Logout failed:", error);
+    });
+};
+
 
   const navLinks = (
     <>
