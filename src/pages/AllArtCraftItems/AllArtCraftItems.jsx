@@ -53,9 +53,9 @@ const AllArtCraftItems = () => {
   }
 
   return (
-    <div>
+    <div  className=" dark:bg-gray-900 min-h-screen flex justify-between flex-col">
       <Navbar />
-      <div className="py-16 max-w-6xl mx-auto px-5">
+      <div className="py-16 max-w-6xl  mx-auto px-5">
         <h2 className="text-2xl font-bold text-center mb-6">All Plants</h2>
 
         {/* Filter and Sort Controls */}
