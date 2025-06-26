@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import Lottie from "lottie-react";
+import femaleInvestorsAnimation from "../../assets/female-investors.json";
 
 const AddCraftItems = () => {
   const { user, loading } = useContext(AuthContext);
@@ -52,6 +54,9 @@ const AddCraftItems = () => {
   return (
     <div className="bg-white py-12 px-4">
       <div className="max-w-4xl mx-auto bg-base-100 shadow-xl rounded-2xl p-6 md:p-10">
+        <div className="w-40 mx-auto mb-6">
+    <Lottie className="w-56 mx-auto" animationData={femaleInvestorsAnimation} loop={true} />
+  </div>
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-cyan-800">
           Add New Plant
         </h2>
@@ -135,7 +140,7 @@ const AddCraftItems = () => {
           </div>
 
           <div className="text-center pt-4">
-            <button type="submit" className="btn bg-cyan-800 text-white text-lg px-8 hover:bg-cyan-700">
+            <button type="submit" className="btn btn-primary text-white text-lg px-8 hover:bg-cyan-700">
               Add Plant
             </button>
           </div>

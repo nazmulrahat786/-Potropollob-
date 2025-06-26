@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import "./Navbar.css";
+import logo from "../../assets/logo.png"; // Replace with your actual logo path
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -102,8 +103,8 @@ const Navbar = () => {
           <Link to="/">
             <div className="w-20 h-18 flex items-center gap-4">
               <img
-                className="w-full h-full rounded-2xl object-cover"
-                src="https://potropollob-58633.web.app/assets/logo-BEnKhIEz.png"
+                className="w-12 h-12 rounded-2xl object-cover"
+                src={logo}
                 alt="Logo"
               />
               <h2 className="text-3xl font-bold invisible md:visible">
@@ -143,7 +144,11 @@ const Navbar = () => {
                 </button>
               </Link>
               <Link to="/register">
-                <button className="py-2 px-4 bt md:px-6 rounded font-semibold bg-white text-green-700 ml-2">
+                <button
+                  className="py-2 px-4 bt
+                
+                md:px-6 rounded font-semibold bg-white text-green-700 ml-2"
+                >
                   Register
                 </button>
               </Link>

@@ -1,120 +1,141 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Footer from "../Footer/Footer";
-import Navbar from "../Navbar/Navbar";
 import { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { IoEyeSharp } from "react-icons/io5";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import Lottie from "lottie-react";
+import loginAnimation from "../../assets/login.json";
 
-// react tostify
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-// react icons
-import { FaGoogle } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import Swal from "sweetalert2";
+// Navbar and Footer
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 const Login = () => {
-    const { signIn, googleLogin, githubLogin } = useContext(AuthContext);
-    const [loginError, setLoginError] = useState([]);
-    const navigate = useNavigate();
-    const location = useLocation();
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const { signIn, googleLogin, user } = useContext(AuthContext);
 
-    // login by form manually 
-    const handleLogin = e => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
+  if (user) {
+    return <Navigate to="/" />;
+  }
 
-        // reset error 
-        setLoginError('');
+  const handleLoginForm = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
-        // sign in
-        signIn(email, password)
-            .then(() => {
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "You've Successfully Loged In",
-                    showConfirmButton: false,
-                    timer: 2000
-                })
-                    .then(() => {
-                        form.reset();
-                        //navigate after login
-                        navigate(location?.state ? location.state : '/');
-                    })
-            })
-            .catch(() => {
-                setLoginError('Your email or password incorrect, try again');
-            })
+    signIn(email, password)
+      .then(() => {
+        toast.success("Login successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        if (error.code === "auth/user-not-found") {
+          toast.error("No user found with this email.");
+        } else if (error.code === "auth/wrong-password") {
+          toast.error("Incorrect password.");
+        } else if (error.code === "auth/invalid-email") {
+          toast.error("Invalid email format.");
+        } else {
+          toast.error("Login failed. Please try again.");
+        }
+      });
+  };
 
-    }
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(() => {
+        toast.success("Google login successful");
+        navigate("/");
+      })
+      .catch(() => {
+        toast.error("Google login failed. Please try again.");
+      });
+  };
 
-    // login by social platfom 
-    const googleLoginn = () => {
-        googleLogin()
-            .then(() => {
-                toast.success("Login successful with Google");
-                navigate(location?.state ? location.state : '/');
-            })
-            .catch(error => {
-                console.error(error.message);
-            })
-    }
-    const githubLoginn = () => {
-        githubLogin()
-            .then(() => {
-                toast.success("Login successful with Google");
-                navigate(location?.state ? location.state : '/');
-            })
-            .catch(error => {
-                console.error(error.message);
-            })
-    }
+  return (
+    <div className="min-h-screen flex flex-col">
+      {/* Top Navbar */}
+      <Navbar />
 
-    return (
-        <div>
-            <Navbar></Navbar>
-            <div className='bg-gray-400 py-16'>
-                <h2 className="text-4xl font-bold text-white text-center mb-6">Please Login</h2>
-                <div className='w-[92%] md:w-[60%] lg:w-[30%] mx-auto bg-white rounded-2xl'>
-                    <form onSubmit={handleLogin} className="card-body">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text font-bold">Email</span>
-                            </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text font-bold">Password</span>
-                            </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
-                        </div>
-                        <div className="form-control mt-6">
-                            <button className="btn bg-cyan-700 text-white">Login</button>
-                        </div>
-                        {
-                            loginError && <p className="text-red-500 font-semibold text-center">{loginError}</p>
-                        }
-                        <div className="space-y-4 mt-2">
-                            <h3 className="text-center border-b-2 pb-1 text-gray-700 font-semibold">Continue with</h3>
-                            <ul className="flex gap-6 justify-center">
-                                <li onClick={() => googleLoginn()} className="text-4xl"><button><FaGoogle /></button></li>
-                                <li onClick={() => githubLoginn()} className="text-4xl"><button><FaGithub /></button></li>
-                            </ul>
-                        </div>
-                        <p className="mt-6">Dont have an account? <Link className="text-red-500 font-bold" to='/register'>Register</Link></p>
-                    </form>
-                </div>
+      {/* Main Content */}
+      <main className="flex-grow flex justify-center items-center bg-gray-100 px-4 py-10">
+        <div className="bg-white shadow-md rounded-lg p-8 w-[90%] max-w-3xl flex flex-col lg:flex-row-reverse items-center gap-8">
+          
+          {/* Animation */}
+          <div className="w-full lg:w-1/2">
+            <Lottie animationData={loginAnimation} loop autoplay />
+          </div>
+
+          {/* Form */}
+          <div className="w-full lg:w-1/2">
+            <h2 className="text-2xl font-bold text-center text-indigo-600 mb-6">Login Now!</h2>
+
+            <form onSubmit={handleLoginForm}>
+              <div className="mb-4">
+                <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div className="mb-6 relative">
+                <label htmlFor="password" className="block text-gray-700 font-medium mb-2">Password</label>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  required
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                  placeholder="Enter your password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-2 top-12 text-xl"
+                >
+                  {showPassword ? <FaEyeSlash /> : <IoEyeSharp />}
+                </button>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-all font-bold"
+              >
+                Login
+              </button>
+            </form>
+
+            <div className="divider text-gray-600 mt-4">Or login with</div>
+
+            <div className="text-center mt-4">
+              <button
+                onClick={handleGoogleLogin}
+                className="flex items-center gap-2 justify-center mt-2 py-2 px-4 w-full rounded-lg border-2 border-indigo-600 font-bold hover:bg-blue-600 hover:text-white transition-all"
+              >
+                <FcGoogle className="text-xl" /> Google
+              </button>
             </div>
-            <Footer></Footer>
+
+            <p className="text-center text-sm mt-4 text-gray-600">
+              Don’t have an account?{" "}
+              <Link to="/register" className="text-orange-500 font-medium hover:underline">
+                Register Now!
+              </Link>
+            </p>
+          </div>
         </div>
-    );
+      </main>
+
+      {/* Footer at bottom */}
+      <Footer />
+    </div>
+  );
 };
 
 export default Login;
