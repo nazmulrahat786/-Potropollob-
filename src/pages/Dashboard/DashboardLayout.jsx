@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { FiHome, FiPlusSquare, FiList, FiMenu } from "react-icons/fi";
 import { FaLeaf } from "react-icons/fa";
+import { GiPlantSeed } from "react-icons/gi"; // For All Plants icon
 
 const DashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -9,7 +10,7 @@ const DashboardLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // 🚀 Redirect to home page on back button press from dashboard
+  // Redirect to home page on back button press from dashboard
   useEffect(() => {
     if (location.pathname.startsWith("/dashboard")) {
       history.replaceState(null, "", "/"); // Set "/" as previous entry
@@ -55,9 +56,7 @@ const DashboardLayout = () => {
     const focusableElementsString =
       'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]';
     const sidebarNode = sidebarRef.current;
-    const focusableElements = sidebarNode.querySelectorAll(
-      focusableElementsString
-    );
+    const focusableElements = sidebarNode.querySelectorAll(focusableElementsString);
     if (focusableElements.length === 0) return;
 
     const firstElem = focusableElements[0];
@@ -92,7 +91,7 @@ const DashboardLayout = () => {
     }`;
 
   return (
-    <div className="min-h-screen flex bg-gray-100 relative">
+    <div className="min-h-screen flex bg-white dark:bg-gray-900 relative">
       {/* Mobile Sidebar Backdrop */}
       {isSidebarOpen && (
         <div
@@ -124,28 +123,19 @@ const DashboardLayout = () => {
           </button>
         </div>
         <nav className="flex flex-col gap-4 font-medium">
-          <NavLink
-            to="/dashboard"
-            end
-            className={navLinkClasses}
-            onClick={closeSidebar}
-          >
+          <NavLink to="/dashboard" end className={navLinkClasses} onClick={closeSidebar}>
             <FiHome aria-hidden="true" /> Overview
           </NavLink>
-          <NavLink
-            to="/dashboard/add-plant"
-            className={navLinkClasses}
-            onClick={closeSidebar}
-          >
+           <NavLink to="/dashboard/all-plants" className={navLinkClasses} onClick={closeSidebar}>
+            <GiPlantSeed aria-hidden="true" /> All Plants
+          </NavLink>
+          <NavLink to="/dashboard/add-plant" className={navLinkClasses} onClick={closeSidebar}>
             <FiPlusSquare aria-hidden="true" /> Add Plant
           </NavLink>
-          <NavLink
-            to="/dashboard/my-plants"
-            className={navLinkClasses}
-            onClick={closeSidebar}
-          >
+          <NavLink to="/dashboard/my-plants" className={navLinkClasses} onClick={closeSidebar}>
             <FiList aria-hidden="true" /> My Plants
           </NavLink>
+         
         </nav>
       </nav>
 
@@ -162,19 +152,23 @@ const DashboardLayout = () => {
           <NavLink to="/dashboard" end className={navLinkClasses}>
             <FiHome aria-hidden="true" /> Overview
           </NavLink>
+            <NavLink to="/dashboard/all-plants" className={navLinkClasses}>
+            <GiPlantSeed aria-hidden="true" /> All Plants
+          </NavLink>
           <NavLink to="/dashboard/add-plant" className={navLinkClasses}>
             <FiPlusSquare aria-hidden="true" /> Add Plant
           </NavLink>
           <NavLink to="/dashboard/my-plants" className={navLinkClasses}>
             <FiList aria-hidden="true" /> My Plants
           </NavLink>
+        
         </nav>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-4 md:p-8 overflow-y-auto pt-16 md:pt-0">
+      <main className="flex-1 p-4 md:p-8 overflow-y-auto pt-16 md:pt-0 bg-white dark:bg-gray-900 rounded-xl shadow">
         {/* Mobile Top Bar */}
-        <div className="md:hidden fixed top-0 left-0 w-full flex items-center justify-between bg-gray-100 px-4 py-3 border-b border-gray-300 z-50">
+        <div className="md:hidden fixed top-0 left-0 w-full flex items-center justify-between bg-white dark:bg-gray-900 px-4 py-3 border-b border-gray-300 dark:border-gray-700 z-50">
           <button
             onClick={toggleSidebar}
             className="text-2xl text-green-700"
@@ -189,7 +183,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Page Content */}
-        <div className="bg-white p-6 rounded-xl shadow">
+        <div>
           <Outlet />
         </div>
       </main>

@@ -16,6 +16,7 @@ import SupportPage from "../pages/SupportPage/SupportPage";
 import Overview from "../pages/Dashboard/Overview";
 import DashboardLayout from "../pages/Dashboard/DashboardLayout";
 import Update from "../pages/Dashboard/Update";
+import AllPlants from "../AllPlants/AllPlants";
 
 const router = createBrowserRouter([
     {
@@ -73,23 +74,36 @@ const router = createBrowserRouter([
       
       ]
     },
+  {
+  path: "/dashboard",
+  element: (
+    <PrivateRoute>
+      <DashboardLayout />
+    </PrivateRoute>
+  ),
+  children: [
     {
-    path: "/dashboard",
-    element: <PrivateRoute>
-      <DashboardLayout /></PrivateRoute>,
-    children: [
-      { index: true, element: <Overview /> ,
-         loader: () => fetch('https://potropollob-server-side.vercel.app/addplants')
-      },
-      { path: "add-plant", element: <AddCraftItems /> },
-      { path: "my-plants", element: <MyArtCraftList /> },
-      
-      { path: "update-plant/:id", element: <Update></Update> ,      loader: ({params}) => fetch(`https://potropollob-server-side.vercel.app/addplants/${params.id}`)
-        
-      },
-      
-    ],
-  },
+      index: true,
+      element: <Overview />,
+      loader: () => fetch("https://potropollob-server-side.vercel.app/addplants"),
+    },
+    { path: "add-plant", element: <AddCraftItems /> },
+    { path: "my-plants", element: <MyArtCraftList /> },
+    {
+      path: "update-plant/:id",
+      element: <Update />,
+      loader: ({ params }) =>
+        fetch(`https://potropollob-server-side.vercel.app/addplants/${params.id}`),
+    },
+    // ADD THIS:
+    {
+      path: "all-plants",
+      element: <AllPlants />, // Create this component to list all plants
+      loader: () => fetch("https://potropollob-server-side.vercel.app/addplants"),
+    },
+  ],
+}
+
   ]);
 
 export default router;

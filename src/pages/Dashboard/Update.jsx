@@ -267,7 +267,7 @@ const Update = () => {
     <div className="form-control mt-8">
       <button
         type="submit"
-        className="btn bg-green-700 hover:bg-green-800 text-white text-lg"
+        className="btn bg-green-500 hover:bg-white border-2 border-green-500 hover:text-green-500 text-white text-lg"
       >
         Update Plant
       </button>

@@ -25,7 +25,7 @@ const images = [
 
 const Slider = () => {
   return (
-    <div className="max-w-5xl mx-auto p-4" style={{ height: '65vh' }}> {/* কারোসেল কন্টেইনারের height 65vh */}
+    <div className="max-w-5xl mx-auto p-4" style={{ height: '55vh' }}> {/* কারোসেল কন্টেইনারের height 65vh */}
       <Swiper
         modules={[Autoplay, Pagination, A11y, EffectFade]}
         effect="fade"

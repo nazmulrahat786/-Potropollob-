@@ -17,7 +17,7 @@ const Footer = () => {
         <div>
           <Link to="/" className="flex items-center gap-2 mb-3">
             <img src={logo} alt="Potropollob Logo" className="w-10 h-10" />
-            <span className="text-xl font-bold">🌿 Potropollob</span>
+            <span className="text-xl font-bold">Potropollob</span>
           </Link>
           <p className="text-sm leading-relaxed">
             Your smart companion for discovering, tracking, and caring for
@@ -52,7 +52,7 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-3">Connect with Us</h3>
           <div className="flex gap-4 mb-4">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/rahat78613"
               target="_blank"
               rel="noreferrer"
               aria-label="Facebook"
@@ -60,7 +60,7 @@ const Footer = () => {
               <FaFacebookF className="text-xl hover:text-blue-600" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/nazmul-rahat-2654262a7"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"

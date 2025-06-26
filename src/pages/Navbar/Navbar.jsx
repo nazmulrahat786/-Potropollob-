@@ -1,14 +1,31 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import "./Navbar.css";
-import logo from "../../assets/logo.png"; // Replace with your actual logo path
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
+  const [theme, setTheme] = useState(() => {
+    // Load saved theme or default to light
+    return localStorage.getItem("theme") || "light";
+  });
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const handleLogout = () => {
     logout().then().catch();
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   const navLinks = (
@@ -69,8 +86,12 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-green-500 sticky top-0 z-50 px-4 md:px-8">
-      <div className="navbar max-w-6xl mx-auto text-white">
+    <div
+      className={`sticky top-0 z-50 ${
+        theme === "dark" ? "bg-gray-900 text-white" : "bg-green-500 text-white"
+      }`}
+    >
+      <div className="navbar max-w-6xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -95,7 +116,9 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white text-black rounded-box w-52"
+              className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 ${
+                theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"
+              }`}
             >
               {navLinks}
             </ul>
@@ -120,7 +143,15 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="navbar-end">
+        <div className="navbar-end flex items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            className="btn btn-sm bg-white text-green-700 hover:bg-gray-200"
+            title="Toggle Theme"
+          >
+            {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+          </button>
+
           {user ? (
             <>
               <img

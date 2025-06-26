@@ -23,6 +23,8 @@ export default {
           error: "#f87272",
         },
       },
+      "dark", // Built-in DaisyUI dark theme for toggling
+      
     ],
   },
 }

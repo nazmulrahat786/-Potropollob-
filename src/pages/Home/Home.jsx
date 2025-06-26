@@ -9,37 +9,32 @@ import Services from "../Services/Services";
 import PromoSection from "../PromoSection/PromoSection";
 import Reviews from "../Reviews/Reviews";
 
-// import { useLoaderData } from "react-router-dom";
-
 const Home = () => {
-    const { user } = useContext(AuthContext);
-    const [myItems, setMyItems] = useState([]);
+  const { user } = useContext(AuthContext);
+  const [myItems, setMyItems] = useState([]);
 
-    useEffect(() => {
-        if (user) {
-            fetch(`https://potropollob-server-side.vercel.app/addplants`)
-                .then(res => res.json())
-                .then(data => {
-                    setMyItems(data);
-                    console.log(data);
-                })
-        }
-    }, [user]);
+  useEffect(() => {
+    if (user) {
+      fetch(`https://potropollob-server-side.vercel.app/addplants`)
+        .then((res) => res.json())
+        .then((data) => {
+          setMyItems(data);
+          console.log(data);
+        });
+    }
+  }, [user]);
 
-    return (
-        <div>
-            <Navbar></Navbar>
-            <Banner></Banner>
-            <CraftItems
-                myItems={myItems}
-            ></CraftItems>
-           <Services></Services>
-           <PromoSection></PromoSection>
-           <Reviews></Reviews>
-           
-            <Footer></Footer>
-        </div>
-    );
+  return (
+    <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+      <Navbar />
+      <Banner />
+      <CraftItems myItems={myItems} />
+      <Services />
+      <PromoSection />
+      <Reviews />
+      <Footer />
+    </div>
+  );
 };
 
 export default Home;

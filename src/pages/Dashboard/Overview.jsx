@@ -3,21 +3,21 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { FaLeaf, FaListAlt, FaUser, FaPlus, FaSeedling } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link, useLoaderData } from "react-router-dom";
+import AnimatedNumber from "../../components/AnimatedNumber";
 
 const Overview = () => {
   const { user } = useContext(AuthContext);
   const total = useLoaderData();
 
   const [myItems, setMyItems] = useState([]);
-  const [totalUser, setTotalUser] = useState([]);
-  
- useEffect(() => {
+  const [totalUser, setTotalUser] = useState(0);
+
+  useEffect(() => {
     fetch("https://potropollob-server-side.vercel.app/email-count")
       .then((res) => res.json())
       .then((data) => setTotalUser(data.totalEmails))
       .catch((err) => console.error(err));
   }, []);
-
 
   useEffect(() => {
     let intervalId;
@@ -34,22 +34,15 @@ const Overview = () => {
     };
 
     fetchMyPlants(); // initial fetch
-
-    // Poll every 20 seconds to update without refresh
-    intervalId = setInterval(fetchMyPlants, 20000);
+    intervalId = setInterval(fetchMyPlants, 20000); // poll every 20s
 
     return () => clearInterval(intervalId);
   }, [user]);
-
-  // Similarly, you can make total plants auto-update by polling the API
-  // But you are getting total from useLoaderData which won't auto-update,
-  // So let's create a state and poll total plants endpoint too
 
   const [totalPlantsCount, setTotalPlantsCount] = useState(total.length);
 
   useEffect(() => {
     let intervalId;
-
 
     const fetchTotalPlants = () => {
       fetch("https://potropollob-server-side.vercel.app/plants")
@@ -60,9 +53,7 @@ const Overview = () => {
         .catch((err) => console.error("Error fetching total plants:", err));
     };
 
-    fetchTotalPlants(); // initial fetch
-
-    // Poll every 20 seconds
+    fetchTotalPlants();
     intervalId = setInterval(fetchTotalPlants, 20000);
 
     return () => clearInterval(intervalId);
@@ -75,70 +66,71 @@ const Overview = () => {
   return (
     <div className="space-y-10">
       {/* Header Section */}
-<div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between bg-green-100 p-6 rounded-xl shadow space-y-4 md:space-y-0 md:space-x-6">
-  <div className="text-center md:text-left">
-    <h1 className="text-3xl font-bold text-green-700">
-      Hello, {user?.displayName || "User"} 👋
-    </h1>
-    <p className="text-gray-600">Logged in as: {user?.email}</p>
-    <p className="text-sm text-gray-500 mt-1">Today is: {today}</p>
-  </div>
-  <img
-    src={user?.photoURL || "https://i.ibb.co/TmsrwQs/user.png"}
-    alt="User Avatar"
-    className="w-16 h-16 rounded-full border-4 border-green-400 shadow-md object-cover"
-  />
-</div>
-
-
+      <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between bg-green-100 p-6 rounded-xl shadow space-y-4 md:space-y-0 md:space-x-6">
+        <div className="text-center md:text-left">
+          <h1 className="text-3xl font-bold text-green-700">
+            Hello, {user?.displayName || "User"} 👋
+          </h1>
+          <p className="text-gray-600">Logged in as: {user?.email}</p>
+          <p className="text-sm text-gray-500 mt-1">Today is: {today}</p>
+        </div>
+        <img
+          src={user?.photoURL || "https://i.ibb.co/TmsrwQs/user.png"}
+          alt="User Avatar"
+          className="w-16 h-16 rounded-full border-4 border-green-400 shadow-md object-cover"
+        />
+      </div>
 
       {/* Stats Section */}
-<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-  {/* Total Plants */}
-  <motion.div
-    className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-    whileHover={{ scale: 1.03 }}
-  >
-    <div className="flex flex-col items-center">
-      {/* icon + label aligned horizontally */}
-      <div className="flex items-center gap-3">
-        <FaListAlt className="text-4xl text-green-600" />
-        <h2 className="text-lg font-semibold">Total Plants</h2>
-      </div>
-      {/* count centered below */}
-      <p className="text-2xl font-bold text-green-700 mt-4 text-center">{totalPlants}</p>
-    </div>
-  </motion.div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Total Plants */}
+        <motion.div
+          className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
+          whileHover={{ scale: 1.03 }}
+        >
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-3">
+              <FaListAlt className="text-4xl text-green-600" />
+              <h2 className="text-lg font-semibold">Total Plants</h2>
+            </div>
+            <p className="text-2xl font-bold text-green-700 mt-4 text-center">
+              <AnimatedNumber number={totalPlants} />
+            </p>
+          </div>
+        </motion.div>
 
-  {/* My Plants */}
-  <motion.div
-    className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-    whileHover={{ scale: 1.03 }}
-  >
-    <div className="flex flex-col items-center">
-      <div className="flex items-center gap-3">
-        <FaLeaf className="text-4xl text-green-600" />
-        <h2 className="text-lg font-semibold">My Plants</h2>
-      </div>
-      <p className="text-2xl font-bold text-green-700 mt-4 text-center">{myPlants}</p>
-    </div>
-  </motion.div>
+        {/* My Plants */}
+        <motion.div
+          className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
+          whileHover={{ scale: 1.03 }}
+        >
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-3">
+              <FaLeaf className="text-4xl text-green-600" />
+              <h2 className="text-lg font-semibold">My Plants</h2>
+            </div>
+            <p className="text-2xl font-bold text-green-700 mt-4 text-center">
+              <AnimatedNumber number={myPlants} />
+            </p>
+          </div>
+        </motion.div>
 
-  {/* Registered Users */}
-  <motion.div
-    className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-    whileHover={{ scale: 1.03 }}
-  >
-    <div className="flex flex-col items-center">
-      <div className="flex items-center gap-3">
-        <FaUser className="text-4xl text-green-600" />
-        <h2 className="text-lg font-semibold">Registered Users</h2>
+        {/* Registered Users */}
+        <motion.div
+          className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
+          whileHover={{ scale: 1.03 }}
+        >
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-3">
+              <FaUser className="text-4xl text-green-600" />
+              <h2 className="text-lg font-semibold">Registered Users</h2>
+            </div>
+            <p className="text-2xl font-bold text-green-700 mt-4 text-center">
+              <AnimatedNumber number={totalUser} />
+            </p>
+          </div>
+        </motion.div>
       </div>
-      <p className="text-2xl font-bold text-green-700 mt-4 text-center">{totalUser}</p>
-    </div>
-  </motion.div>
-</div>
-
 
       {/* Quick Actions */}
       <div className="bg-white rounded-xl p-6 shadow flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
