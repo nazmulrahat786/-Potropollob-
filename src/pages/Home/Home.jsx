@@ -8,6 +8,8 @@ import Services from "../Services/Services";
 import PromoSection from "../PromoSection/PromoSection";
 import Reviews from "../Reviews/Reviews";
 import NewPlants from "../../components/NewPlants/NewPlants";
+import { Toaster } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
@@ -19,7 +21,7 @@ const Home = () => {
         .then((res) => res.json())
         .then((data) => {
           setMyItems(data);
-          console.log(data);
+      
         });
     }
   }, [user]);
@@ -34,6 +36,9 @@ const Home = () => {
       <PromoSection />
       <Reviews />
       <Footer />
+     <Toaster position="top-center" />
+   <ToastContainer position="top-center" autoClose={3000} />
+
     </div>
   );
 };

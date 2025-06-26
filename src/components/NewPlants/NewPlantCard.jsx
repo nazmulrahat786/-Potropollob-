@@ -1,66 +1,42 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { BiSolidCategory } from "react-icons/bi";
-import { FaHeartbeat } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const NewPlantCard = ({ item }) => {
+  const navigate = useNavigate();
   const { _id, name, description, category, healthStatus, image } = item;
-  const [expanded, setExpanded] = useState(false);
 
-  const toggleDescription = () => setExpanded((prev) => !prev);
-
-  const displayedDescription = expanded
-    ? description
-    : description.length > 150
-    ? description.slice(0, 150) + "..."
-    : description;
+  // Truncate description to 10 chars + "..." if longer
+  const displayedDescription =
+    description && description.length > 50
+      ? description.slice(0, 50) + "....."
+      : description || "No description available.";
 
   return (
-    <div className="card card-compact bg-base-100 shadow-lg hover:shadow-2xl transition-shadow duration-300 rounded-lg overflow-hidden">
-      <figure>
-        <img
-          className="w-full h-[242px] object-cover"
-          src={image}
-          alt={name || "Plant image"}
-          loading="lazy"
-        />
-      </figure>
-      <div className="card-body">
-        <div className="flex gap-8 mb-2">
-          <h1 className="flex items-center gap-2 text-base font-semibold text-green-600">
-            <BiSolidCategory className="text-xl" />
-            {category}
-          </h1>
-          <h1 className="flex items-center gap-2 text-base font-semibold text-red-500">
-            <FaHeartbeat className="text-xl" />
-            {healthStatus}
-          </h1>
-        </div>
-
-        <h2 className="card-title font-bold text-lg">{name}</h2>
-
-        <p className="text-sm mt-1 text-gray-700">
-          {displayedDescription}{" "}
-          {description.length > 150 && (
-            <button
-              onClick={toggleDescription}
-              className="text-green-600 font-semibold hover:underline focus:outline-none"
-              aria-expanded={expanded}
-              aria-controls={`desc-${_id}`}
-            >
-              {expanded ? "See less" : "See more"}
-            </button>
-          )}
+    <div
+      className="border rounded-lg shadow-md flex flex-col"
+      style={{ minHeight: "380px" }}
+    >
+      <img
+        src={image}
+        alt={name || "Plant image"}
+        className="h-40 w-full object-cover rounded-t-lg"
+        loading="lazy"
+      />
+      <div className="p-4 flex flex-col flex-grow">
+        <h3 className="text-lg font-semibold mb-1">{name}</h3>
+        <p className="text-sm text-gray-500 mb-1">
+          Category: <span className="font-medium">{category}</span>
         </p>
-
-        <div className="flex justify-end mt-4">
-          <Link to={`/plantViewDetails/${_id}`}>
-            <button className="btn bg-green-500 hover:bg-green-600 text-white font-semibold transition-colors duration-200">
-              View Details
-            </button>
-          </Link>
-        </div>
+        <p className="text-sm text-gray-500 mb-2">
+          Status: <span className="font-medium">{healthStatus}</span>
+        </p>
+        <p className="text-gray-600 flex-grow text-sm">{displayedDescription}</p>
+        <button
+          onClick={() => navigate(`/plantViewDetails/${_id}`)}
+          className="mt-4 bg-green-500 text-white py-2 rounded hover:bg-white hover:text-green-500 border-2 border-green-500 transition"
+        >
+          See More
+        </button>
       </div>
     </div>
   );
@@ -70,7 +46,7 @@ NewPlantCard.propTypes = {
   item: PropTypes.shape({
     _id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    description: PropTypes.string,
     category: PropTypes.string.isRequired,
     healthStatus: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,

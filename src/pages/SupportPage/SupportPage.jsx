@@ -79,7 +79,7 @@ const SupportPage = () => {
                 href="tel:+1234567890"
                 className="text-green-700 hover:underline"
               >
-                +1 234 567 890
+               01746627513
               </a>
             </div>
           </div>

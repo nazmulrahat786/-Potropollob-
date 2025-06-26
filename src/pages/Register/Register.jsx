@@ -9,9 +9,11 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 import Lottie from "lottie-react";
 import registerAnimation from "../../assets/register.json";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
-  const { createUser, updateUserProfile, user } = useContext(AuthContext);
+  const { googleLogin, createUser, updateUserProfile, user } = useContext(AuthContext);
   const [signToggle, setSignToggle] = useState(false);
   const [registerErr, setRegisterErr] = useState("");
   const navigate = useNavigate();
@@ -69,6 +71,16 @@ const Register = () => {
 
   const handleToggleSignBtn = () => {
     setSignToggle(!signToggle);
+  };
+   const handleGoogleLogin = () => {
+    googleLogin()
+      .then(() => {
+        toast.success("Google login successful");
+        navigate("/");
+      })
+      .catch(() => {
+        toast.error("Google login failed. Please try again.");
+      });
   };
 
   return (
@@ -154,16 +166,15 @@ const Register = () => {
 
               <div className="text-center text-gray-500 my-6">or register with</div>
 
-              <div className="text-center">
-                <button
-                  onClick={() => {
-                    /* Add Google login handler here if you want */
-                  }}
-                  className="flex items-center gap-2 justify-center mt-2 py-2 px-4 w-full rounded-lg border-2 border-green-500 font-bold hover:bg-green-100 hover:text-black transition-all"
-                >
-                  <FcGoogle className="text-xl" /> Google
-                </button>
-              </div>
+              
+            <div className="text-center mt-4">
+              <button
+                onClick={handleGoogleLogin}
+                className="flex items-center gap-2 justify-center mt-2 py-2 px-4 w-full rounded-lg border-2 border-green-500 font-bold hover:bg-green-100 hover:text-black transition-all"
+              >
+                <FcGoogle className="text-xl" /> Google
+              </button>
+            </div>
 
               <p className="text-center text-sm mt-6 text-gray-600">
                 Already have an account?{" "}
@@ -176,6 +187,7 @@ const Register = () => {
         </div>
       </main>
       <Footer />
+      <ToastContainer />
     </>
   );
 };
