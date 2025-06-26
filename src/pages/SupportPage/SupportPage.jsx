@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+
 import toast, { Toaster } from "react-hot-toast";
 import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import { useState } from "react";
 
 const faqs = [
   {

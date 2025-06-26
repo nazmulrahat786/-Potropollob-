@@ -1,9 +1,9 @@
-import { FaStar } from "react-icons/fa";
+
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import { FcProcess } from "react-icons/fc";
+
 import { MdOutlineWaterDrop } from "react-icons/md";
-import { BiSolidDollarCircle } from "react-icons/bi";
+
 import { useLoaderData, useParams } from "react-router-dom";
 import Loading from "../../../public/Loading";
 

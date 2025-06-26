@@ -5,7 +5,7 @@ import MyArtCraftItem from "../MyArtCraftItem/MyArtCraftItem";
 const MyArtCraftList = () => {
     const { user } = useContext(AuthContext);
     const [myItems, setMyItems] = useState([]);
-    const [originalItems, setOriginalItems] = useState([]);
+
 
     useEffect(() => {
         if (user) {
@@ -13,7 +13,7 @@ const MyArtCraftList = () => {
                 .then(res => res.json())
                 .then(data => {
                     setMyItems(data);
-                    setOriginalItems(data);
+                 
                     console.log(data);
                 })
         }

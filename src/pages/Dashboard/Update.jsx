@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react';
+import  { useContext, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import Loading from '../../../public/Loading';
 
 const Update = () => {
   const navigate = useNavigate();
@@ -31,9 +32,9 @@ const Update = () => {
 
   if (loading) {
     return (
-      <p className="text-center mt-12">
-        <span className="loading loading-spinner loading-lg"></span>
-      </p>
+       <div className="flex justify-center items-center py-5 px-5">
+               <Loading></Loading>
+            </div>
     );
   }
 
