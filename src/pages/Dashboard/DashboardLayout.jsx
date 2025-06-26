@@ -1,11 +1,28 @@
 import { useState, useEffect, useRef } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { FiHome, FiPlusSquare, FiList, FiMenu } from "react-icons/fi";
 import { FaLeaf } from "react-icons/fa";
 
 const DashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // 🚀 Redirect to home page on back button press from dashboard
+  useEffect(() => {
+    if (location.pathname.startsWith("/dashboard")) {
+      history.replaceState(null, "", "/"); // Set "/" as previous entry
+      history.pushState(null, "", location.pathname); // Re-add current dashboard path
+
+      const handlePopState = () => {
+        navigate("/", { replace: true }); // Go home
+      };
+
+      window.addEventListener("popstate", handlePopState);
+      return () => window.removeEventListener("popstate", handlePopState);
+    }
+  }, [location, navigate]);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => setIsSidebarOpen(false);
@@ -38,7 +55,9 @@ const DashboardLayout = () => {
     const focusableElementsString =
       'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]';
     const sidebarNode = sidebarRef.current;
-    const focusableElements = sidebarNode.querySelectorAll(focusableElementsString);
+    const focusableElements = sidebarNode.querySelectorAll(
+      focusableElementsString
+    );
     if (focusableElements.length === 0) return;
 
     const firstElem = focusableElements[0];
@@ -60,8 +79,6 @@ const DashboardLayout = () => {
     };
 
     sidebarNode.addEventListener("keydown", trapFocus);
-
-    // Focus first element on open
     firstElem.focus();
 
     return () => sidebarNode.removeEventListener("keydown", trapFocus);
@@ -107,7 +124,12 @@ const DashboardLayout = () => {
           </button>
         </div>
         <nav className="flex flex-col gap-4 font-medium">
-          <NavLink to="/dashboard" end className={navLinkClasses} onClick={closeSidebar}>
+          <NavLink
+            to="/dashboard"
+            end
+            className={navLinkClasses}
+            onClick={closeSidebar}
+          >
             <FiHome aria-hidden="true" /> Overview
           </NavLink>
           <NavLink

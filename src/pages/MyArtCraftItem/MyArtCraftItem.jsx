@@ -96,7 +96,7 @@ const MyPlantItem = ({ item, myItems, setMyItems }) => {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-end gap-4 mt-6">
-            <Link to={`/updateDataForm/${_id}`}>
+            <Link to={`/dashboard/update-plant/${_id}`}>
               <button className="bg-green-600 text-white py-2 px-5 rounded-lg font-medium hover:bg-green-700 transition w-full sm:w-auto">
                 Update
               </button>

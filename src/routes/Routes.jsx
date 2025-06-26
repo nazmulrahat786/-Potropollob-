@@ -10,12 +10,12 @@ import MyArtCraftList from "../pages/MyArtCraftList/MyArtCraftList";
 import UpdateDataForm from "../pages/UpdateDataForm/UpdateDataForm";
 import Page404 from "../pages/Page404/Page404";
 import PrivateRoute from "./PrivateRoute";
-import SubcategoryItems from "../pages/SubcategoryItems/SubcategoryItems";
-import SubCategoryDetails from "../pages/SubCategoryDetails/SubCategoryDetails";
+
 import AboutPage from "../pages/AboutPage/AboutPage";
 import SupportPage from "../pages/SupportPage/SupportPage";
 import Overview from "../pages/Dashboard/Overview";
 import DashboardLayout from "../pages/Dashboard/DashboardLayout";
+import Update from "../pages/Dashboard/Update";
 
 const router = createBrowserRouter([
     {
@@ -83,6 +83,10 @@ const router = createBrowserRouter([
       },
       { path: "add-plant", element: <AddCraftItems /> },
       { path: "my-plants", element: <MyArtCraftList /> },
+      
+      { path: "update-plant/:id", element: <Update></Update> ,      loader: ({params}) => fetch(`https://potropollob-server-side.vercel.app/addplants/${params.id}`)
+        
+      },
       
     ],
   },

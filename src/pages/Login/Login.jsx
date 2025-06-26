@@ -71,7 +71,7 @@ const Login = () => {
 
           {/* Form */}
           <div className="w-full lg:w-1/2">
-            <h2 className="text-2xl font-bold text-center text-indigo-600 mb-6">Login Now!</h2>
+            <h2 className="text-2xl font-bold text-center text-green-500 mb-6">Login Now!</h2>
 
             <form onSubmit={handleLoginForm}>
               <div className="mb-4">
@@ -80,7 +80,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   required
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                   placeholder="Enter your email"
                 />
               </div>
@@ -91,7 +91,7 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                   name="password"
                   required
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                   placeholder="Enter your password"
                 />
                 <button
@@ -105,7 +105,7 @@ const Login = () => {
 
               <button
                 type="submit"
-                className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-all font-bold"
+                className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-all font-bold"
               >
                 Login
               </button>
@@ -116,7 +116,7 @@ const Login = () => {
             <div className="text-center mt-4">
               <button
                 onClick={handleGoogleLogin}
-                className="flex items-center gap-2 justify-center mt-2 py-2 px-4 w-full rounded-lg border-2 border-indigo-600 font-bold hover:bg-blue-600 hover:text-white transition-all"
+                className="flex items-center gap-2 justify-center mt-2 py-2 px-4 w-full rounded-lg border-2 border-green-500 font-bold hover:bg-green-100 hover:text-black transition-all"
               >
                 <FcGoogle className="text-xl" /> Google
               </button>
@@ -124,7 +124,7 @@ const Login = () => {
 
             <p className="text-center text-sm mt-4 text-gray-600">
               Don’t have an account?{" "}
-              <Link to="/register" className="text-orange-500 font-medium hover:underline">
+              <Link to="/register" className="text-green-500 font-medium hover:underline">
                 Register Now!
               </Link>
             </p>

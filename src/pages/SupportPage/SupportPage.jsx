@@ -124,7 +124,7 @@ const SupportPage = () => {
             className="textarea textarea-bordered w-full"
           ></textarea>
 
-          <button type="submit" className="btn btn-success btn-block">
+          <button type="submit" className="btn bg-green-500 text-white font-bold btn-block">
             Submit
           </button>
         </form>

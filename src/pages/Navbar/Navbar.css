@@ -50,7 +50,7 @@
 .active-link {
   position: relative;
   font-weight: bold;
-  color: #ffffff !important;
+  color: #010000 !important;
 }
 
 .active-link::after {
@@ -60,5 +60,5 @@
   bottom: 0;
   height: 2px;
   width: 100%;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }

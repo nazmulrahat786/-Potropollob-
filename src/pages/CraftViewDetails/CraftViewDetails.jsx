@@ -5,6 +5,7 @@ import { FcProcess } from "react-icons/fc";
 import { MdOutlineWaterDrop } from "react-icons/md";
 import { BiSolidDollarCircle } from "react-icons/bi";
 import { useLoaderData, useParams } from "react-router-dom";
+import Loading from "../../../public/Loading";
 
 const CraftViewDetails = () => {
   const { id } = useParams();
@@ -14,9 +15,9 @@ const CraftViewDetails = () => {
     return (
       <>
         <Navbar />
-        <div className="py-20 text-center text-gray-600 font-semibold text-xl">
-          Loading craft item details...
-        </div>
+        <div className="flex justify-center items-center py-5 px-5">
+               <Loading></Loading>
+            </div>
         <Footer />
       </>
     );

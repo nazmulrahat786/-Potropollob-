@@ -3,15 +3,16 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 import Lottie from "lottie-react";
 import femaleInvestorsAnimation from "../../assets/female-investors.json";
+import Loading from "../../../public/Loading";
 
 const AddCraftItems = () => {
   const { user, loading } = useContext(AuthContext);
 
   if (loading) {
     return (
-      <div className="text-center mt-20">
-        <span className="loading loading-spinner loading-lg text-cyan-700"></span>
-      </div>
+      <div className="flex justify-center items-center py-5 px-5">
+               <Loading></Loading>
+            </div>
     );
   }
 
@@ -140,7 +141,7 @@ const AddCraftItems = () => {
           </div>
 
           <div className="text-center pt-4">
-            <button type="submit" className="btn btn-primary text-white text-lg px-8 hover:bg-cyan-700">
+            <button type="submit" className="btn bg-green-500 text-white text-lg px-8 hover:bg-white shadow-2xl hover:text-green-500 transition duration-300 font-semibold">
               Add Plant
             </button>
           </div>

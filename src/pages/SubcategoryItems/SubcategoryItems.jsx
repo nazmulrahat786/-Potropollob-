@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import SubcategoryItem from "../SubcategoryItem/SubcategoryItem";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import Loading from "../../../public/Loading";
 
 const SubcategoryItems = () => {
     const { subCategoryData } = useContext(AuthContext);
@@ -29,7 +30,9 @@ const SubcategoryItems = () => {
 
 
     if (loading6) {
-        return <p className="text-center"><span className="loading loading-spinner loading-lg "></span></p>
+        return <div className="flex justify-center items-center py-5 px-5">
+               <Loading></Loading>
+            </div>
     }
 
     return (

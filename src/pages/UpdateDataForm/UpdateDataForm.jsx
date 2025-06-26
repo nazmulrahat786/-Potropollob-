@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import Footer from "../Footer/Footer";
-import Navbar from "../Navbar/Navbar";
+
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import Loading from "../../../public/Loading";
 
 const UpdateDataForm = () => {
   const formData = useLoaderData();
@@ -26,9 +26,9 @@ const UpdateDataForm = () => {
 
   if (loading) {
     return (
-      <p className="text-center mt-12">
-        <span className="loading loading-spinner loading-lg"></span>
-      </p>
+       <div className="flex justify-center items-center py-5 px-5">
+               <Loading></Loading>
+            </div>
     );
   }
 
@@ -64,9 +64,7 @@ const UpdateDataForm = () => {
   };
 
   return (
-    <div>
-      <Navbar />
-      <div className="bg-[#f0bc8c] py-28">
+ 
         <div className="w-[90%] md:w-[80%] lg:w-[70%] mx-auto shadow-2xl bg-white rounded-2xl p-6">
           <h2 className="text-4xl font-bold text-center pb-8">
             Update Plant Info
@@ -235,9 +233,8 @@ const UpdateDataForm = () => {
             </div>
           </form>
         </div>
-      </div>
-      <Footer />
-    </div>
+      
+   
   );
 };
 

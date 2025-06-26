@@ -23,7 +23,7 @@ const MyArtCraftList = () => {
         <div>
             <div className="py-10">
                 <div className="flex justify-center mb-12">
-                    {/* You can add filter/search or header here */}
+                   <h1 className="text-5xl font-bold">My Plants</h1>
                 </div>
 
                 {myItems.length === 0 ? (

@@ -50,11 +50,11 @@ const AllArtCraftItem = ({ items }) => {
       <td className="px-6 py-4 text-right whitespace-nowrap">
         <Link to={`/plantViewDetails/${_id}`}>
           <button
-            className="btn bg-teal-600 hover:bg-teal-700 text-white text-sm lg:text-base px-4 py-2 rounded shadow-md transition-colors duration-200"
+            className="btn bg-green-500  hover:bg-white hover:text-green-500 text-white text-sm lg:text-base px-4 py-2 rounded shadow-md transition-colors duration-200"
             aria-label={`View details of ${name}`}
           >
             View Details
-          </button>
+          </button> 
         </Link>
       </td>
     </tr>

@@ -32,7 +32,7 @@ const CraftItem = ({ item }) => {
                 <div className="flex justify-end mt-4">
                     <Link to={`/plantViewDetails/${_id}`}>
                         <div className="card-actions">
-                            <button className="btn bg-cyan-700 text-white">View Details</button>
+                            <button className="btn bg-green-500 text-white">View Details</button>
                         </div>
                     </Link>
                 </div>

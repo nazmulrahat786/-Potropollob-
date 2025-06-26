@@ -3,6 +3,7 @@ import { BiSolidDollarCircle } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types"
+import Loading from "../../../public/Loading";
 
 const SubcategoryItem = ({ item }) => {
     const [subCategoryItems, setSubCategoryItems] = useState([]);
@@ -17,7 +18,9 @@ const SubcategoryItem = ({ item }) => {
     }, [item])
 
     if(loading5){
-        return <p className="text-center"><span className="loading loading-spinner loading-lg "></span></p>
+        return  <div className="flex justify-center items-center py-5 px-5">
+               <Loading></Loading>
+            </div>
     }
 
     return (

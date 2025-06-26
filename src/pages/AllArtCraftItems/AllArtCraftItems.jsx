@@ -3,6 +3,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { useEffect, useState } from "react";
 import AllArtCraftItem from "../AllArtCraftItem/AllArtCraftItem";
+import Loading from "../../../public/Loading";
 
 const AllArtCraftItems = () => {
   const allItems = useLoaderData();
@@ -18,9 +19,9 @@ const AllArtCraftItems = () => {
 
   if (loading) {
     return (
-      <p className="text-center mt-12">
-        <span className="loading loading-spinner loading-lg"></span>
-      </p>
+      <div className="flex justify-center items-center py-5 px-5">
+               <Loading></Loading>
+            </div>
     );
   }
 
