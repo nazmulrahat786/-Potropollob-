@@ -10,7 +10,7 @@ const NewPlants = () => {
     fetch("https://potropollob-server-side.vercel.app/addplants")
       .then((res) => res.json())
       .then((data) => {
-        const latestSix = data.reverse().slice(0, 6);
+        const latestSix = data.reverse().slice(0, 8);
         setPlants(latestSix);
         setLoading(false);
       })
@@ -30,7 +30,7 @@ const NewPlants = () => {
 
   if (plants.length === 0) {
     return (
-      <div className="p-6 text-center text-gray-500">
+      <div className="p-6 text-center text-slate-500">
         No plants found at the moment.
       </div>
     );
@@ -38,10 +38,10 @@ const NewPlants = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto px-24 py-6">
-      <h2 className="text-2xl font-bold mb-8 text-center ">
+      <h2 className="text-2xl text-green-500 font-bold mb-8 text-center ">
         Newest Plants
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {plants.map((plant) => (
           <NewPlantCard key={plant._id} item={plant} />
         ))}

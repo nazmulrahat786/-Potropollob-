@@ -6,9 +6,9 @@ import Footer from "../Footer/Footer";
 const AboutPage = () => {
   return (
        <div>
-        <Navbar></Navbar>
-    <section className="bg-cream min-h-screen py-20  text-gray-800">
-   
+        
+    <section className="bg-cream min-h-screen flex flex-col justify-between gap-9  text-gray-800">
+   <Navbar></Navbar>
       <div className="max-w-5xl mx-auto space-y-12">
         
         {/* Header */}
@@ -21,7 +21,7 @@ const AboutPage = () => {
         </header>
 
         {/* Cards Container */}
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid mx-8 md:grid-cols-2 gap-10">
           {/* Mission Card */}
           <div className="bg-white p-8 rounded-xl shadow-lg flex flex-col space-y-5">
             <div className="flex items-center gap-4">
@@ -52,7 +52,7 @@ const AboutPage = () => {
         </div>
 
         {/* Technologies Section */}
-        <div className="bg-white p-8 rounded-xl shadow-lg text-center">
+        <div className="bg-white mx-8  p-8 rounded-xl shadow-lg text-center">
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="bg-green-200 text-green-700 p-3 rounded-full mx-auto">
               <FaTools size={28} />
@@ -74,8 +74,9 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </section>
-    <Footer></Footer>
+    
        </div>
   );
 };

@@ -66,13 +66,13 @@ const Overview = () => {
   return (
     <div className="space-y-10">
       {/* Header Section */}
-      <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between bg-green-100 p-6 rounded-xl shadow space-y-4 md:space-y-0 md:space-x-6">
+      <div className="flex flex-col-reverse my-4 md:flex-row items-center md:items-start justify-between bg-green-100 p-6 rounded-xl shadow space-y-4 md:space-y-0 md:space-x-6">
         <div className="text-center md:text-left">
           <h1 className="text-3xl font-bold text-green-700">
             Hello, {user?.displayName || "User"} 👋
           </h1>
           <p className="text-gray-600">Logged in as: {user?.email}</p>
-          <p className="text-sm text-gray-500 mt-1">Today is: {today}</p>
+          <p className="text-sm text-slate-500 mt-1">Today is: {today}</p>
         </div>
         <img
           src={user?.photoURL || "https://i.ibb.co/TmsrwQs/user.png"}
@@ -91,9 +91,9 @@ const Overview = () => {
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-3">
               <FaListAlt className="text-4xl text-green-600" />
-              <h2 className="text-lg font-semibold">Total Plants</h2>
+              <h2 className="text-lg text-green-500 font-semibold">Total Plants</h2>
             </div>
-            <p className="text-2xl font-bold text-green-700 mt-4 text-center">
+            <p className="text-2xl  font-bold text-green-500 mt-4 text-center">
               <AnimatedNumber number={totalPlants} />
             </p>
           </div>
@@ -107,7 +107,7 @@ const Overview = () => {
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-3">
               <FaLeaf className="text-4xl text-green-600" />
-              <h2 className="text-lg font-semibold">My Plants</h2>
+              <h2 className="text-lg text-green-500  font-semibold">My Plants</h2>
             </div>
             <p className="text-2xl font-bold text-green-700 mt-4 text-center">
               <AnimatedNumber number={myPlants} />
@@ -123,7 +123,7 @@ const Overview = () => {
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-3">
               <FaUser className="text-4xl text-green-600" />
-              <h2 className="text-lg font-semibold">Registered Users</h2>
+              <h2 className="text-lg text-green-500  font-semibold">Registered Users</h2>
             </div>
             <p className="text-2xl font-bold text-green-700 mt-4 text-center">
               <AnimatedNumber number={totalUser} />

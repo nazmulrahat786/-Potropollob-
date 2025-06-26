@@ -31,9 +31,9 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-5 bg-base-100 text-base-content">
+    <section className="py-5  text-base-content">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-10">🌿 Our Services</h2>
+        <h2 className="text-3xl font-bold text-green-500 text-center mb-10">🌿 Our Services</h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <div key={index} className="card bg-base-200 shadow-md p-6 space-y-4 hover:shadow-xl transition-all">

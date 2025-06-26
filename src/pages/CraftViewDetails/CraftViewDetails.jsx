@@ -52,10 +52,11 @@ const CraftViewDetails = () => {
   } = expectedItem;
 
   return (
-    <div>
-      <Navbar />
-      <main className="py-12 md:py-16 bg-gray-50 min-h-screen">
-        <div className="w-[90%] max-w-5xl mx-auto shadow-2xl border border-gray-200 rounded-2xl bg-white overflow-hidden">
+    <div >
+      
+      <main className=" flex gap-7 flex-col justify-between min-h-screen">
+        <Navbar />
+        <div className="w-[90%] max-w-5xl mx-auto shadow-2xl border border-gray-200 rounded-2xl overflow-hidden">
           <div className="flex flex-col lg:flex-row gap-8 p-6">
             {/* Image Section */}
       <div className="lg:w-2/5 relative group rounded-xl overflow-hidden shadow-md aspect-w-4 aspect-h-3">
@@ -76,10 +77,10 @@ const CraftViewDetails = () => {
             
             <section className="lg:w-3/5 flex flex-col justify-between">
              <div className="pb-4">
-                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold  leading-tight">
                   {name}
                 </h1>
-                <p className="text-gray-700  whitespace-pre-line leading-relaxed text-sm sm:text-base">
+                <p className="y  whitespace-pre-line leading-relaxed text-sm sm:text-base">
                   {description}
                 </p>
 
@@ -127,7 +128,7 @@ const CraftViewDetails = () => {
               {/* Main Info */}
               <div className="space-y-6">
                
-                <address className="not-italic text-gray-800 space-y-3 mt-8 border-t border-gray-200 pt-6 text-sm sm:text-base">
+                <address className="not-italic space-y-3 mt-8 border-t border-gray-200 pt-6 text-sm sm:text-base">
                   <p className="flex items-center gap-2 text-base sm:text-lg font-semibold">
                     <span className="text-cyan-600">👤</span> User Name:{" "}
                     <span className="font-normal">{userName}</span>
@@ -140,9 +141,11 @@ const CraftViewDetails = () => {
               </div>
             </section>
           </div>
+          
         </div>
+        <Footer />
       </main>
-      <Footer />
+      
     </div>
   );
 };

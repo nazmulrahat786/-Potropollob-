@@ -27,7 +27,7 @@ const Home = () => {
   }, [user]);
 
   return (
-    <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <div className=" text-gray-900 dark:text-gray-100 min-h-screen">
       <Navbar />
       <Banner />
      

@@ -56,7 +56,7 @@ const AllArtCraftItems = () => {
     <div>
       <Navbar />
       <div className="py-16 max-w-6xl mx-auto px-5">
-        <h2 className="text-2xl font-semibold mb-6">All Art & Craft Items</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">All Plants</h2>
 
         {/* Filter and Sort Controls */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
@@ -66,7 +66,7 @@ const AllArtCraftItems = () => {
               id="categoryFilter"
               value={filterCategory}
               onChange={e => setFilterCategory(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-1"
+              className="border text-slate-500 border-gray-300 rounded px-3 py-1"
             >
               {categories.map(cat => (
                 <option key={cat} value={cat}>{cat}</option>
@@ -80,7 +80,7 @@ const AllArtCraftItems = () => {
               id="sortOrder"
               value={sortOrder}
               onChange={e => setSortOrder(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-1"
+              className="border text-slate-500 border-gray-300 rounded px-3 py-1"
             >
               <option value="asc">Ascending (A-Z)</option>
               <option value="desc">Descending (Z-A)</option>
@@ -95,7 +95,7 @@ const AllArtCraftItems = () => {
               <div
                 key={item._id}
                 className="border rounded-lg shadow-md flex flex-col"
-                style={{ minHeight: "380px" }}
+                style={{ minHeight: "340px" }}
               >
                 <img
                   src={item.image}
@@ -104,16 +104,11 @@ const AllArtCraftItems = () => {
                 />
                 <div className="p-4 flex flex-col flex-grow">
                   <h3 className="text-lg font-semibold mb-1">{item.name}</h3>
-                  <p className="text-sm text-gray-500 mb-1">
-                    Category: <span className="font-medium">{item.category}</span>
-                  </p>
-                  <p className="text-sm text-gray-500 mb-2">
-                    Status: <span className="font-medium">{item.healthStatus}</span>
-                  </p>
-                  <p className="text-gray-600 flex-grow text-sm">
+                  
+                  <p className=" flex-grow text-sm">
                     {item.description
-                      ? item.description.length > 100
-                        ? item.description.slice(0, 100) + "..."
+                      ? item.description.length > 50
+                        ? item.description.slice(0, 50) + "..."
                         : item.description
                       : "No description available."}
                   </p>
@@ -127,7 +122,7 @@ const AllArtCraftItems = () => {
               </div>
             ))
           ) : (
-            <p className="text-center col-span-full text-gray-500">No items found.</p>
+            <p className="text-center col-span-full text-slate-500">No items found.</p>
           )}
         </div>
       </div>

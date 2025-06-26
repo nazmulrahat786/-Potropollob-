@@ -20,3 +20,16 @@
     white-space: nowrap;
   }
 }
+
+/* Light mode styles (default) */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Dark mode styles */
+.dark body {
+  background-color: #121212;
+  color: white;
+}
+

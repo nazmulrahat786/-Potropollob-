@@ -25,9 +25,9 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <section className="bg-base-100 text-base-content py-4 mb-10 px-6">
+    <section className="text-base-content py-4 mb-10 px-6">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-12">🌟 What Users Say</h2>
+        <h2 className="text-3xl text-green-500 font-bold mb-12">🌟 What Users Say</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {reviews.map((review, idx) => (
             <div key={idx} className="card bg-base-200 shadow-md p-6 space-y-4">

@@ -88,7 +88,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom */}
-      <div className="text-center mt-10 text-sm text-gray-500 px-2">
+      <div className="text-center mt-10 text-sm text-slate-500 px-2">
         © {new Date().getFullYear()} Potropollob. All rights reserved.
       </div>
     </footer>

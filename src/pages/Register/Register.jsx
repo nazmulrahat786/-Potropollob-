@@ -145,7 +145,7 @@ const Register = () => {
                   <button
                     type="button"
                     onClick={handleToggleSignBtn}
-                    className="absolute right-3 top-[42px] text-gray-500 hover:text-cyan-700 transition"
+                    className="absolute right-3 top-[42px] text-slate-500 hover:text-cyan-700 transition"
                     aria-label={signToggle ? "Hide password" : "Show password"}
                   >
                     {signToggle ? <FaEyeSlash className="text-xl" /> : <IoEyeSharp className="text-xl" />}
@@ -164,7 +164,7 @@ const Register = () => {
                 </button>
               </form>
 
-              <div className="text-center text-gray-500 my-6">or register with</div>
+              <div className="text-center text-slate-500 my-6">or register with</div>
 
               
             <div className="text-center mt-4">

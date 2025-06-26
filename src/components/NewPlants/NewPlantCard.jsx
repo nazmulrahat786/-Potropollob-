@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const NewPlantCard = ({ item }) => {
   const navigate = useNavigate();
-  const { _id, name, description, category, healthStatus, image } = item;
+  const { _id, name, description, image } = item;
 
   // Truncate description to 10 chars + "..." if longer
   const displayedDescription =
@@ -14,7 +14,7 @@ const NewPlantCard = ({ item }) => {
   return (
     <div
       className="border rounded-lg shadow-md flex flex-col"
-      style={{ minHeight: "380px" }}
+      style={{ minHeight: "340px" }}
     >
       <img
         src={image}
@@ -23,13 +23,8 @@ const NewPlantCard = ({ item }) => {
         loading="lazy"
       />
       <div className="p-4 flex flex-col flex-grow">
-        <h3 className="text-lg font-semibold mb-1">{name}</h3>
-        <p className="text-sm text-gray-500 mb-1">
-          Category: <span className="font-medium">{category}</span>
-        </p>
-        <p className="text-sm text-gray-500 mb-2">
-          Status: <span className="font-medium">{healthStatus}</span>
-        </p>
+        <h3 className="text-lg text-slate-500 font-semibold mb-1">{name}</h3>
+       
         <p className="text-gray-600 flex-grow text-sm">{displayedDescription}</p>
         <button
           onClick={() => navigate(`/plantViewDetails/${_id}`)}

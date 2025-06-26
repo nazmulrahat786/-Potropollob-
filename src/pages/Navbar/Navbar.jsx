@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import "./Navbar.css";
@@ -6,32 +6,38 @@ import logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
+  const [darkMode, setDarkMode] = useState(false);
 
+  // Load saved theme on mount
   useEffect(() => {
-    if (theme === "dark") {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      setDarkMode(true);
       document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
     }
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+  }, []);
+
+  // Toggle theme and save preference
+  const toggleTheme = () => {
+    if (darkMode) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      setDarkMode(false);
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      setDarkMode(true);
+    }
+  };
 
   const handleLogout = () => {
     logout()
       .then(() => {
         console.log("Logged out successfully");
-        // Optionally redirect or show notification
       })
       .catch((error) => {
         console.error("Logout failed:", error);
       });
-  };
-
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
   };
 
   const navLinks = (
@@ -48,7 +54,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/allArtCraftItems" // If this should be "All Plants", change the route too
+          to="/allArtCraftItems"
           className={({ isActive }) =>
             isActive ? "active-link" : "default-link"
           }
@@ -92,11 +98,7 @@ const Navbar = () => {
   );
 
   return (
-    <div
-      className={`sticky top-0 z-50 ${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-green-500 text-white"
-      }`}
-    >
+    <div className="sticky top-0 z-50 bg-green-500 text-white">
       <div className="navbar max-w-6xl mx-auto">
         {/* Start */}
         <div className="navbar-start">
@@ -123,9 +125,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 ${
-                theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"
-              }`}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 bg-white text-black"
             >
               {navLinks}
             </ul>
@@ -153,15 +153,46 @@ const Navbar = () => {
 
         {/* End */}
         <div className="navbar-end flex items-center gap-4">
-          <button
-            onClick={toggleTheme}
-            className="btn btn-sm bg-white text-green-700 hover:bg-gray-200"
-            title="Toggle Theme"
-            aria-label="Toggle Theme"
-          >
-            {theme === "light" ? "🌙 Dark" : "☀️ Light"}
-          </button>
+          {/* Theme toggle */}
+          <label className="flex cursor-pointer gap-2 items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+            </svg>
 
+            <input
+              type="checkbox"
+              checked={darkMode}
+              onChange={toggleTheme}
+              className="toggle theme-controller"
+            />
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </label>
+
+          {/* User info and buttons */}
           {user ? (
             <>
               <img

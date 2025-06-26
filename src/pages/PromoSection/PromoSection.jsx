@@ -1,9 +1,7 @@
-
-
 const PromoSection = () => {
   return (
-    <section className="bg-emerald-50 my-10 text-green-900 py-16 px-6">
-      <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center gap-8">
+    <section className="bg-emerald-50 rounded-3xl  my-10 text-green-900 py-16 px-5 max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto  flex flex-col-reverse md:flex-row items-center gap-8">
         {/* Text Content */}
         <div className="flex-1 text-center md:text-left">
           <h2 className="text-4xl font-bold mb-4">
@@ -21,7 +19,7 @@ const PromoSection = () => {
           <img
             src="https://cdn-icons-png.flaticon.com/512/7664/7664156.png"
             alt="Plant Assistant Illustration"
-            className="w-full max-w-xs mx-auto"
+            className="w-full max-w-md mx-auto"
           />
         </div>
       </div>

@@ -34,7 +34,7 @@ const AllArtCraftItem = ({ items }) => {
       {/* Category + Watering Frequency */}
       <td className="px-6 py-4 whitespace-normal max-w-xs">
         <p className="font-semibold text-gray-700 capitalize">{category}</p>
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-slate-500 mt-1">
           Water every <span className="font-medium">{wateringFrequency}</span> day(s)
         </p>
       </td>
