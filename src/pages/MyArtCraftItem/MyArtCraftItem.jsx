@@ -46,14 +46,14 @@ const MyPlantItem = ({ item, myItems, setMyItems }) => {
   };
 
   return (
-    <div className="w-[90%] md:w-[85%] lg:w-[70%] mx-auto my-6 border rounded-xl shadow-md bg-white overflow-hidden">
+    <div className="w-full max-w-4xl mx-auto my-6 border rounded-xl shadow-md bg-white overflow-hidden">
       <div className="flex flex-col lg:flex-row">
         {/* Image */}
-        <div className="lg:w-2/5 h-64 lg:h-auto relative group">
+        <div className="lg:w-2/5 h-64 lg:h-auto relative group flex-shrink-0">
           <img
             src={image}
             alt={name}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none"
           />
           <div className="absolute top-4 left-4 bg-green-700 text-white text-xs sm:text-sm font-semibold uppercase rounded-full px-3 py-1 shadow-lg">
             {category}
@@ -63,35 +63,47 @@ const MyPlantItem = ({ item, myItems, setMyItems }) => {
         {/* Details */}
         <div className="lg:w-3/5 p-6 space-y-4 flex flex-col justify-between">
           <div>
-            <h2 className="text-3xl font-bold text-gray-800">{name}</h2>
-            <p className="text-gray-600 mt-2">{description}</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 break-words">{name}</h2>
+            <p className="text-gray-600 mt-2 break-words">{description}</p>
 
             <div className="mt-4 space-y-1 text-sm sm:text-base text-gray-700">
-              <p><strong>Care Level:</strong> {careLevel}</p>
+              <p>
+                <strong>Care Level:</strong> {careLevel}
+              </p>
               <p className="flex items-center gap-1">
                 <MdOutlineWaterDrop className="text-blue-500" />
                 Water every {wateringFrequency} day(s)
               </p>
-              <p><strong>Last Watered:</strong> {lastWateredDate}</p>
-              <p><strong>Next Watering:</strong> {nextWateringDate}</p>
-              <p><strong>Health Status:</strong> {healthStatus}</p>
+              <p>
+                <strong>Last Watered:</strong> {lastWateredDate}
+              </p>
+              <p>
+                <strong>Next Watering:</strong> {nextWateringDate}
+              </p>
+              <p>
+                <strong>Health Status:</strong> {healthStatus}
+              </p>
             </div>
 
             <div className="mt-4 space-y-1 text-sm text-gray-800">
-              <p><strong>User Name:</strong> {userName}</p>
-              <p><strong>User Email:</strong> {userEmail}</p>
+              <p>
+                <strong>User Name:</strong> {userName}
+              </p>
+              <p>
+                <strong>User Email:</strong> {userEmail}
+              </p>
             </div>
           </div>
 
-          <div className="flex justify-end gap-4 mt-6">
+          <div className="flex flex-col sm:flex-row justify-end gap-4 mt-6">
             <Link to={`/updateDataForm/${_id}`}>
-              <button className="bg-green-600 text-white py-2 px-5 rounded-lg font-medium hover:bg-green-700 transition">
+              <button className="bg-green-600 text-white py-2 px-5 rounded-lg font-medium hover:bg-green-700 transition w-full sm:w-auto">
                 Update
               </button>
             </Link>
             <button
               onClick={() => handleDelete(_id)}
-              className="bg-red-600 text-white py-2 px-5 rounded-lg font-medium hover:bg-red-700 transition"
+              className="bg-red-600 text-white py-2 px-5 rounded-lg font-medium hover:bg-red-700 transition w-full sm:w-auto"
             >
               Delete
             </button>

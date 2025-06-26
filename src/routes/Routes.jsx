@@ -83,6 +83,7 @@ const router = createBrowserRouter([
       },
       { path: "add-plant", element: <AddCraftItems /> },
       { path: "my-plants", element: <MyArtCraftList /> },
+      
     ],
   },
   ]);

@@ -1,56 +1,39 @@
 import { useContext } from "react";
-import Footer from "../Footer/Footer";
-import Navbar from "../Navbar/Navbar";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 
-const AddCraftItems  = () => {
+const AddCraftItems = () => {
   const { user, loading } = useContext(AuthContext);
 
   if (loading) {
     return (
-      <p className="text-center mt-12">
-        <span className="loading loading-spinner loading-lg"></span>
-      </p>
+      <div className="text-center mt-20">
+        <span className="loading loading-spinner loading-lg text-cyan-700"></span>
+      </div>
     );
   }
 
-  const handleAddCraftItems  = (e) => {
+  const handleAddCraftItems = (e) => {
     e.preventDefault();
     const form = e.target;
 
-    const image = form.image.value;
-    const name = form.name.value;
-    const category = form.category.value;
-    const careLevel = form.careLevel.value;
-    const wateringFrequency = form.wateringFrequency.value;
-    const lastWateredDate = form.lastWateredDate.value;
-    const nextWateringDate = form.nextWateringDate.value;
-    const healthStatus = form.healthStatus.value;
-    const description = form.description.value;
-    const userEmail = user?.email;
-    const userName = user?.displayName;
-
     const newPlant = {
-      image,
-      name,
-      category,
-      careLevel,
-      wateringFrequency,
-      lastWateredDate,
-      nextWateringDate,
-      healthStatus,
-      userEmail,
-      userName,
-      description,
+      image: form.image.value,
+      name: form.name.value,
+      category: form.category.value,
+      careLevel: form.careLevel.value,
+      wateringFrequency: form.wateringFrequency.value,
+      lastWateredDate: form.lastWateredDate.value,
+      nextWateringDate: form.nextWateringDate.value,
+      healthStatus: form.healthStatus.value,
+      description: form.description.value,
+      userEmail: user?.email,
+      userName: user?.displayName,
     };
 
-    // Send to backend
     fetch("https://potropollob-server-side.vercel.app/addplants", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newPlant),
     })
       .then((res) => res.json())
@@ -67,102 +50,99 @@ const AddCraftItems  = () => {
   };
 
   return (
-    <div>
-      
-      <div className="bg-white py-12 md:py-20">
-        <div className="w-[90%] md:w-[85%] lg:w-[70%] mx-auto shadow-2xl bg-base-100 rounded-2xl">
-          <h2 className="text-4xl font-bold text-center pt-12">Add Plant</h2>
-          <form onSubmit={handleAddCraftItems } className="card-body">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="bg-white py-12 px-4">
+      <div className="max-w-4xl mx-auto bg-base-100 shadow-xl rounded-2xl p-6 md:p-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-cyan-800">
+          Add New Plant
+        </h2>
 
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold text-base">Image URL</span>
-                </label>
-                <input type="text" name="image" placeholder="Enter image URL" className="input input-bordered" required />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold text-base">Plant Name</span>
-                </label>
-                <input type="text" name="name" placeholder="Enter plant name" className="input input-bordered" required />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold text-base">Category</span>
-                </label>
-                <input type="text" name="category" placeholder="e.g. succulent, herb..." className="input input-bordered" required />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold text-base">Care Level</span>
-                </label>
-                <input type="text" name="careLevel" placeholder="easy / medium / hard" className="input input-bordered" required />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold text-base">Watering Frequency (in days)</span>
-                </label>
-                <input type="number" name="wateringFrequency" placeholder="e.g. 3" className="input input-bordered" required />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold text-base">Last Watered Date</span>
-                </label>
-                <input type="date" name="lastWateredDate" className="input input-bordered" required />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold text-base">Next Watering Date</span>
-                </label>
-                <input type="date" name="nextWateringDate" className="input input-bordered" required />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold text-base">Health Status</span>
-                </label>
-                <input type="text" name="healthStatus" placeholder="e.g. Healthy / Needs Attention" className="input input-bordered" required />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold text-base">User Email</span>
-                </label>
-                <input type="email" name="userEmail" defaultValue={user?.email} readOnly className="input input-bordered" />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold text-base">User Name</span>
-                </label>
-                <input type="text" name="userName" defaultValue={user?.displayName} readOnly className="input input-bordered" />
-              </div>
-
+        <form onSubmit={handleAddCraftItems} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="font-semibold">Image URL</label>
+              <input type="text" name="image" className="input input-bordered w-full" placeholder="Enter image URL" required />
             </div>
 
-            <div className="form-control mt-4">
-              <label className="label">
-                <span className="label-text font-bold text-base">Description</span>
-              </label>
-              <textarea name="description" placeholder="Write a short description..." className="textarea textarea-bordered" required></textarea>
+            <div>
+              <label className="font-semibold">Plant Name</label>
+              <input type="text" name="name" className="input input-bordered w-full" placeholder="Enter plant name" required />
             </div>
 
-            <div className="form-control mt-6">
-              <button className="btn bg-cyan-800 text-white text-lg">Add Plant</button>
+            <div>
+              <label className="font-semibold">Category</label>
+              <select name="category" className="select select-bordered w-full" required>
+                <option value="">Select category</option>
+                <option value="Succulent">Succulent</option>
+                <option value="Herb">Herb</option>
+                <option value="Flowering Plant">Flowering Plant</option>
+                <option value="Indoor Plant">Indoor Plant</option>
+                <option value="Outdoor Plant">Outdoor Plant</option>
+                <option value="Fern">Fern</option>
+                <option value="Cactus">Cactus</option>
+              </select>
             </div>
-          </form>
-        </div>
+
+            <div>
+              <label className="font-semibold">Care Level</label>
+              <select name="careLevel" className="select select-bordered w-full" required>
+                <option value="">Select care level</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="font-semibold">Watering Frequency (in days)</label>
+              <input type="number" name="wateringFrequency" className="input input-bordered w-full" placeholder="e.g. 3" required />
+            </div>
+
+            <div>
+              <label className="font-semibold">Last Watered Date</label>
+              <input type="date" name="lastWateredDate" className="input input-bordered w-full" required />
+            </div>
+
+            <div>
+              <label className="font-semibold">Next Watering Date</label>
+              <input type="date" name="nextWateringDate" className="input input-bordered w-full" required />
+            </div>
+
+            <div>
+              <label className="font-semibold">Health Status</label>
+              <select name="healthStatus" className="select select-bordered w-full" required>
+                <option value="">Select health status</option>
+                <option value="Healthy">Healthy</option>
+                <option value="Needs Attention">Needs Attention</option>
+                <option value="Wilting">Wilting</option>
+                <option value="Infected">Infected</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="font-semibold">User Email</label>
+              <input type="email" name="userEmail" className="input input-bordered w-full bg-gray-100" value={user?.email} readOnly />
+            </div>
+
+            <div>
+              <label className="font-semibold">User Name</label>
+              <input type="text" name="userName" className="input input-bordered w-full bg-gray-100" value={user?.displayName} readOnly />
+            </div>
+          </div>
+
+          <div>
+            <label className="font-semibold">Description</label>
+            <textarea name="description" className="textarea textarea-bordered w-full" rows="4" placeholder="Write a short description..." required></textarea>
+          </div>
+
+          <div className="text-center pt-4">
+            <button type="submit" className="btn bg-cyan-800 text-white text-lg px-8 hover:bg-cyan-700">
+              Add Plant
+            </button>
+          </div>
+        </form>
       </div>
-      
     </div>
   );
 };
 
-export default AddCraftItems ;
+export default AddCraftItems;

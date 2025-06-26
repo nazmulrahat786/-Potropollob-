@@ -13,21 +13,56 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "active-link" : "default-link"
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/allArtCraftItems">All Plants</NavLink>
+        <NavLink
+          to="/allArtCraftItems"
+          className={({ isActive }) =>
+            isActive ? "active-link" : "default-link"
+          }
+        >
+          All Plants
+        </NavLink>
       </li>
       {user && (
         <li>
-          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive ? "active-link" : "default-link"
+            }
+          >
+            Dashboard
+          </NavLink>
         </li>
       )}
       <li>
-        <NavLink to="/about">About Us</NavLink>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive ? "active-link" : "default-link"
+          }
+        >
+          About Us
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/support">Support</NavLink>
+        <NavLink
+          to="/support"
+          className={({ isActive }) =>
+            isActive ? "active-link" : "default-link"
+          }
+        >
+          Support
+        </NavLink>
       </li>
     </>
   );
@@ -108,7 +143,7 @@ const Navbar = () => {
                 </button>
               </Link>
               <Link to="/register">
-                <button className="py-2 px-4 md:px-6 rounded font-semibold bg-white text-green-700 ml-2">
+                <button className="py-2 px-4 bt md:px-6 rounded font-semibold bg-white text-green-700 ml-2">
                   Register
                 </button>
               </Link>
