@@ -8,6 +8,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import Services from "../Services/Services";
 import PromoSection from "../PromoSection/PromoSection";
 import Reviews from "../Reviews/Reviews";
+import NewPlants from "../../components/NewPlants/NewPlants";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
@@ -29,6 +30,7 @@ const Home = () => {
       <Navbar />
       <Banner />
       <CraftItems myItems={myItems} />
+      <NewPlants></NewPlants>
       <Services />
       <PromoSection />
       <Reviews />

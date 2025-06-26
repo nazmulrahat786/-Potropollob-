@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import Loading from '../../../public/Loading';
 
 const Subcategories = ({ subcategory }) => {
     const [subcategoryItem, setSubCategoryItem] = useState([]);
@@ -23,7 +24,9 @@ const Subcategories = ({ subcategory }) => {
     }, [setSubCategoryData, subCategoryData, subcategory])
 
     if (loading) {
-        return <p className="text-center"><span className="loading loading-spinner loading-lg "></span></p>
+        return  <div className="flex justify-center items-center py-5 px-5">
+               <Loading></Loading>
+            </div>
     }
 
     return (

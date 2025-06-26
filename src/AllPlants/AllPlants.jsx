@@ -97,72 +97,32 @@ const AllPlants = () => {
           </div>
         </div>
 
-        <div className="overflow-x-auto shadow rounded-lg border border-gray-200 dark:border-gray-700">
+        {/* Table view for desktop */}
+        <div className="hidden sm:block overflow-x-auto shadow rounded-lg border border-gray-200 dark:border-gray-700">
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 table-auto sm:table-fixed">
-            {/* Table header hidden on small screens */}
-            <thead className="bg-gray-50 dark:bg-gray-800 hidden sm:table-header-group">
+            <thead className="bg-gray-50 dark:bg-gray-800">
               <tr>
-                <th className="px-3 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Image
-                </th>
-                <th className="px-3 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Name
-                </th>
-                <th className="px-3 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Category
-                </th>
-                <th className="px-3 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Health Status
-                </th>
-                <th className="px-3 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Actions
-                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Image</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Name</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Category</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Health Status</th>
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
             <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
               {filteredAndSortedItems.length > 0 ? (
                 filteredAndSortedItems.map((item) => (
-                  <tr
-                    key={item._id}
-                    className="block sm:table-row hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer mb-6 sm:mb-0"
-                  >
-                    <td
-                      className="block sm:table-cell px-3 sm:px-6 py-2 whitespace-normal sm:whitespace-nowrap relative"
-                      data-label="Image"
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="h-24 w-24 sm:h-16 sm:w-16 rounded object-cover mx-auto sm:mx-0"
-                      />
+                  <tr key={item._id} className="hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <td className="px-6 py-4">
+                      <img src={item.image} alt={item.name} className="h-16 w-16 rounded object-cover" />
                     </td>
-                    <td
-                      className="block sm:table-cell px-3 sm:px-6 py-2 whitespace-normal sm:whitespace-nowrap text-gray-900 dark:text-gray-100 font-semibold text-sm sm:text-base"
-                      data-label="Name"
-                    >
-                      {item.name}
-                    </td>
-                    <td
-                      className="block sm:table-cell px-3 sm:px-6 py-2 whitespace-normal sm:whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm sm:text-base"
-                      data-label="Category"
-                    >
-                      {item.category}
-                    </td>
-                    <td
-                      className="block sm:table-cell px-3 sm:px-6 py-2 whitespace-normal sm:whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm sm:text-base"
-                      data-label="Health Status"
-                    >
-                      {item.healthStatus}
-                    </td>
-                    <td
-                      className="block sm:table-cell px-3 sm:px-6 py-2 whitespace-normal sm:whitespace-nowrap text-center"
-                      data-label="Actions"
-                    >
+                    <td className="px-6 py-4 font-medium text-gray-900 dark:text-gray-100">{item.name}</td>
+                    <td className="px-6 py-4 text-gray-700 dark:text-gray-300">{item.category}</td>
+                    <td className="px-6 py-4 text-gray-700 dark:text-gray-300">{item.healthStatus}</td>
+                    <td className="px-6 py-4 text-center">
                       <button
-                        onClick={() =>
-                          navigate(`/plantViewDetails/${item._id}`)
-                        }
-                        className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm rounded transition"
+                        onClick={() => navigate(`/plantViewDetails/${item._id}`)}
+                        className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm rounded transition"
                       >
                         See More
                       </button>
@@ -171,16 +131,42 @@ const AllPlants = () => {
                 ))
               ) : (
                 <tr>
-                  <td
-                    colSpan={5}
-                    className="px-3 sm:px-6 py-4 whitespace-nowrap text-center text-gray-500 dark:text-gray-400 text-sm sm:text-base"
-                  >
-                    No items found.
-                  </td>
+                  <td colSpan={5} className="px-6 py-4 text-center text-gray-500 dark:text-gray-400">No items found.</td>
                 </tr>
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Card view for mobile */}
+        <div className="sm:hidden space-y-4">
+          {filteredAndSortedItems.length > 0 ? (
+            filteredAndSortedItems.map((item) => (
+              <div
+                key={item._id}
+                className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow border border-gray-200 dark:border-gray-700"
+              >
+                <div className="flex items-center space-x-4">
+                  <img src={item.image} alt={item.name} className="h-20 w-20 rounded object-cover" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{item.name}</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Category: {item.category}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Health: {item.healthStatus}</p>
+                  </div>
+                </div>
+                <div className="mt-4 text-right">
+                  <button
+                    onClick={() => navigate(`/plantViewDetails/${item._id}`)}
+                    className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm rounded transition"
+                  >
+                    See More
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="text-center text-gray-500 dark:text-gray-400">No items found.</p>
+          )}
         </div>
       </main>
     </div>

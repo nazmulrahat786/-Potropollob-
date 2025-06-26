@@ -7,7 +7,6 @@ import logo from "../../assets/logo.png";
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [theme, setTheme] = useState(() => {
-    // Load saved theme or default to light
     return localStorage.getItem("theme") || "light";
   });
 
@@ -21,7 +20,14 @@ const Navbar = () => {
   }, [theme]);
 
   const handleLogout = () => {
-    logout().then().catch();
+    logout()
+      .then(() => {
+        console.log("Logged out successfully");
+        // Optionally redirect or show notification
+      })
+      .catch((error) => {
+        console.error("Logout failed:", error);
+      });
   };
 
   const toggleTheme = () => {
@@ -42,7 +48,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/allArtCraftItems"
+          to="/allArtCraftItems" // If this should be "All Plants", change the route too
           className={({ isActive }) =>
             isActive ? "active-link" : "default-link"
           }
@@ -92,6 +98,7 @@ const Navbar = () => {
       }`}
     >
       <div className="navbar max-w-6xl mx-auto">
+        {/* Start */}
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -137,17 +144,20 @@ const Navbar = () => {
           </Link>
         </div>
 
+        {/* Center */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-2 font-semibold">
             {navLinks}
           </ul>
         </div>
 
+        {/* End */}
         <div className="navbar-end flex items-center gap-4">
           <button
             onClick={toggleTheme}
             className="btn btn-sm bg-white text-green-700 hover:bg-gray-200"
             title="Toggle Theme"
+            aria-label="Toggle Theme"
           >
             {theme === "light" ? "🌙 Dark" : "☀️ Light"}
           </button>
@@ -158,7 +168,7 @@ const Navbar = () => {
                 className="w-10 h-10 object-cover rounded-full cursor-pointer"
                 src={user?.photoURL || "https://i.ibb.co/TmsrwQs/user.png"}
                 alt="User"
-                title={user.displayName}
+                title={user?.displayName || "User"}
               />
               <button
                 onClick={handleLogout}
@@ -175,9 +185,7 @@ const Navbar = () => {
                 </button>
               </Link>
               <Link to="/register">
-                <button
-                  className="py-2 px-4 md:px-6 rounded font-semibold bg-white text-green-700 ml-2"
-                >
+                <button className="py-2 px-4 md:px-6 rounded font-semibold bg-white text-green-700 ml-2">
                   Register
                 </button>
               </Link>
