@@ -70,8 +70,8 @@ The admin dashboard includes:
 **Clone the repository:**
 
 ```bash
-git clone https://github.com/nazmulrahat786/plant-care-tracker.git
-cd plant-care-tracker
+https://github.com/nazmulrahat786/-Potropollob-.git
+cd Potropollob
 ```
 **Install dependencies:**
 ```
