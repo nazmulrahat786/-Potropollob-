@@ -14,7 +14,6 @@ const MyArtCraftList = () => {
                 .then(data => {
                     setMyItems(data);
                  
-                    console.log(data);
                 })
         }
     }, [user]);

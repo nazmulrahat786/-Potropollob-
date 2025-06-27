@@ -12,8 +12,7 @@ const SubcategoryItems = () => {
     const [categoryItems, setCategoryItems] = useState([]);
     const [loading6, setLoading6] = useState(true);
 
-    console.log(subcategoryItems);
-    console.log(subCategoryData);
+   
 
     const bgImage = {
         backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7))",

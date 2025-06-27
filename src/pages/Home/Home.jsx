@@ -13,19 +13,7 @@ import NewPlants from "../../components/NewPlants/NewPlants";
 import { ToastContainer } from "react-toastify";
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
-  const [myItems, setMyItems] = useState([]);
 
-  useEffect(() => {
-    if (user) {
-      fetch(`https://potropollob-server-side.vercel.app/addplants`)
-        .then((res) => res.json())
-        .then((data) => {
-          setMyItems(data);
-      
-        });
-    }
-  }, [user]);
 
   return (
     <div className=" text-gray-900 dark:text-gray-100 min-h-screen">

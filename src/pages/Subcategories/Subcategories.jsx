@@ -9,8 +9,7 @@ const Subcategories = ({ subcategory }) => {
     const { subcategory_name, description, image } = subcategoryItem;
     const [loading, setLoading] = useState(true);
     const { subCategoryData, setSubCategoryData } = useContext(AuthContext);
-    // console.log(subCategoryData);
-    // console.log(subcategory);
+ 
 
     useEffect(() => {
         if (subcategory) {
@@ -18,7 +17,7 @@ const Subcategories = ({ subcategory }) => {
             if (subCategoryData) {
                 setSubCategoryItem(subcategory);
                 setLoading(false);
-                console.log(subCategoryData);
+             
             }
         }
     }, [setSubCategoryData, subCategoryData, subcategory])
