@@ -1,21 +1,23 @@
 # 🌿 Potropollob 
 
 ## 📖 Project Overview  
-Potropollob  is a modern and responsive web application designed to help users discover, track, and care for various plants. Whether you are a beginner or an expert gardener, this platform makes plant care easier and more enjoyable.
+Potropollob is a modern and responsive web application designed to help users discover, track, and care for various plants. Whether you are a beginner or an expert gardener, this platform makes plant care easier and more enjoyable.
 
 ## 🔗 Live Demo  
 Experience the app live and explore all its features here:  
 [🌿Potropollob Live Site](https://potropollob-c7ebe.web.app)
 
-
-
+---
 
 ## 🌟 Key Features  
 - 🌱 **Plant Explorer:** Browse and discover a wide variety of plant species with detailed descriptions and images.  
 - 🔍 **Search Functionality:** Easily find your favorite plants or explore by categories.  
 - 🧑‍💼 **Admin Panel:** Admin-only access to manage plant entries, user interactions, and content updates.  
+- 🧾 **Dashboard & Overview:** Admin dashboard with visual stats and quick access to manage plants, users, and reviews.  
 - 🔐 **Authentication:** Secure login and registration using Firebase (Email/Password & Google).  
 - 📝 **User Reviews & Ratings:** Authenticated users can leave reviews and rate plants, with data stored securely in MongoDB.  
+
+---
 
 ## 🛠️ Tech Stack  
 - **Frontend:** React, Tailwind CSS  
@@ -24,6 +26,20 @@ Experience the app live and explore all its features here:
 - **Authentication:** Firebase Auth  
 - **Routing:** React Router DOM  
 - **Hosting:** Firebase Hosting  
+
+---
+
+## 📊 Dashboard Overview  
+The admin dashboard includes:
+
+- 📌 **Overview Page:** Visual stats on total users, plants, and reviews with animated counters.  
+- 📁 **All Plants:** Manage all plant entries with edit/delete access.  
+- ➕ **Add Plant:** Form-based interface to add new plants to the system.  
+- 🧾 **My Plants:** View and manage plants added by the current admin.  
+
+> 💡 Built using React Router nested routes and layout, and animated with `react-spring`.
+
+---
 
 ## 📦 Dependencies  
 ```json
@@ -42,9 +58,11 @@ Experience the app live and explore all its features here:
     "react-tooltip": "^5.26.4",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.10.8",
-    "swiper": "^11.1.1"
+    "swiper": "^11.1.1",
+    "react-spring": "^9.7.1"
   }
-  }
+}
+
 
 ```
 ## 🖥️ How to Run Locally
