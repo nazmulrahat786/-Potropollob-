@@ -7,7 +7,7 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import AllArtCraftItems from "../pages/AllArtCraftItems/AllArtCraftItems";
 import MyArtCraftList from "../pages/MyArtCraftList/MyArtCraftList";
-import UpdateDataForm from "../pages/UpdateDataForm/UpdateDataForm";
+
 import Page404 from "../pages/Page404/Page404";
 import PrivateRoute from "./PrivateRoute";
 
@@ -29,10 +29,7 @@ const router = createBrowserRouter([
             element: <Home></Home>,
             loader: () => fetch('https://potropollob-server-side.vercel.app/addplants')
         },
-        {
-            path: '/addCraftItems',
-            element: <PrivateRoute><AddCraftItems></AddCraftItems></PrivateRoute>
-        },
+      
         {
           path: '/plantViewDetails/:id',
           element: <PrivateRoute><CraftViewDetails></CraftViewDetails></PrivateRoute>,
@@ -47,19 +44,12 @@ const router = createBrowserRouter([
           element: <Register></Register>
         },
         {
-          path: '/allArtCraftItems',
+          path: '/allPlants',
           element: <AllArtCraftItems></AllArtCraftItems>,
           loader: () => fetch('https://potropollob-server-side.vercel.app/addplants')
         },
-        {
-          path: '/myArtCraftList',
-          element: <PrivateRoute><MyArtCraftList></MyArtCraftList></PrivateRoute>
-        },
-        {
-          path: '/updateDataForm/:id',
-          element: <UpdateDataForm></UpdateDataForm>,
-          loader: ({params}) => fetch(`https://potropollob-server-side.vercel.app/addplants/${params.id}`)
-        },
+      
+      
         {
           path: '/about',
           element: <AboutPage></AboutPage>,

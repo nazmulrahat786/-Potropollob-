@@ -59,7 +59,7 @@ const handleLogout = () => {
       </li>
       <li>
         <NavLink
-          to="/allArtCraftItems"
+          to="/allPlants"
           className={({ isActive }) =>
             isActive ? "active-link" : "default-link"
           }

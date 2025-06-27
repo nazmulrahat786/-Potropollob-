@@ -8,7 +8,7 @@ const PrivateRoute = ({children}) => {
     const { user, loading } = useContext(AuthContext);
 
     if(loading){
-        console.log(loading);
+      
         return  <div className="flex justify-center items-center py-5 px-5">
                <Loading></Loading>
             </div>
