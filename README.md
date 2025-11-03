@@ -8,7 +8,7 @@ Experience the app live and explore all its features here:
 [🌿Potropollob Live Site](https://potropollob-c7ebe.web.app)
 
 --- 
- 
+  
 ## 🌟 Key Features  
 - 🌱 **Plant Explorer:** Browse and discover a wide variety of plant species with detailed descriptions and images.  
 - 🔍 **Search Functionality:** Easily find your favorite plants or explore by categories.  
