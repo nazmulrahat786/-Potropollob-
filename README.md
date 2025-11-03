@@ -7,7 +7,7 @@ Potropollob is a modern and responsive web application designed to help users di
 Experience the app live and explore all its features here:  
 [🌿Potropollob Live Site](https://potropollob-c7ebe.web.app)
 
----   
+---    
   
 ## 🌟 Key Features  
 - 🌱 **Plant Explorer:** Browse and discover a wide variety of plant species with detailed descriptions and images.  
